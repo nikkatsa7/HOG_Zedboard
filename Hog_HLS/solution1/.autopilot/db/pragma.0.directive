@@ -1,0 +1,160 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+<sourceFile name="">
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut0"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut1"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut2"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut3"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="PIPELINE">
+<option name="II" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="DEPENDENCE">
+<option name="variable" value="descriptor"/>
+<option name="inter" positionalBoolean="type" value=""/>
+<option name="false" positionalBoolean="dependent" value=""/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram0" label="">
+<pragma name="DEPENDENCE">
+<option name="variable" value="sum"/>
+<option name="inter" positionalBoolean="type" value=""/>
+<option name="false" positionalBoolean="dependent" value=""/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="normalizeHisto0" label="">
+<pragma name="PIPELINE">
+<option name="II" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut0"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut1"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut2"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="lut3"/>
+<option name="core" value="ROM_1P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="PIPELINE">
+<option name="II" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="DEPENDENCE">
+<option name="variable" value="descriptor"/>
+<option name="inter" positionalBoolean="type" value=""/>
+<option name="false" positionalBoolean="dependent" value=""/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="computeHistogram1" label="">
+<pragma name="DEPENDENCE">
+<option name="variable" value="sum"/>
+<option name="inter" positionalBoolean="type" value=""/>
+<option name="false" positionalBoolean="dependent" value=""/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="normalizeHisto1" label="">
+<pragma name="PIPELINE">
+<option name="II" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="svm" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="weights"/>
+<option name="core" value="ROM_2P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="svm" label="">
+<pragma name="PIPELINE">
+<option name="II" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="INTERFACE">
+<option name="s_axilite" positionalBoolean="mode" value=""/>
+<option name="depth" value="16"/>
+<option name="port" positionalBoolean="4" value="specs"/>
+<option name="bundle" value="SPECS"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="INTERFACE">
+<option name="s_axilite" positionalBoolean="mode" value=""/>
+<option name="port" positionalBoolean="4" value="return"/>
+<option name="bundle" value="CONTROL_BUS"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="INTERFACE">
+<option name="m_axi" positionalBoolean="mode" value=""/>
+<option name="port" positionalBoolean="4" value="image0"/>
+<option name="offset" value="slave"/>
+<option name="bundle" value="INPUT_IMAGE"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="normalized0"/>
+<option name="core" value="RAM_2P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="RESOURCE">
+<option name="variable" positionalBoolean="4" value="normalized1"/>
+<option name="core" value="RAM_2P_BRAM"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="image_buffer0"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="1"/>
+</pragma>
+</directive>
+<directive functionLabel="" functionName="hog" label="">
+<pragma name="ARRAY_PARTITION">
+<option name="variable" positionalBoolean="4" value="image_buffer1"/>
+<option name="complete" positionalBoolean="type" value=""/>
+<option name="dim" value="1"/>
+</pragma>
+</directive>
+</sourceFile>
+</AutoPilot:ProjectResources>

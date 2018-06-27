@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] RTL name 'hog_mul_34ns_32nsjbC' is changed to 'hog_mul_34ns_32nsjbC_x' due to conflict." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:31.640+0300" type="Warning"/>
+        <logs message="WARNING: [BIND 205-102] The specified resource core for memory 'normalized1_V' will be ignored if a simpler one can be used." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:29.495+0300" type="Warning"/>
+        <logs message="WARNING: [BIND 205-102] The specified resource core for memory 'normalized0_V' will be ignored if a simpler one can be used." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:29.478+0300" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'sum' (src/c/hog.cpp:9)." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:27.268+0300" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'descriptor.V' (src/c/hog.cpp:9)." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:27.021+0300" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'sum' (src/c/hog.cpp:114)." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:27.016+0300" type="Warning"/>
+        <logs message="WARNING: [ANALYSIS 214-52] Found false inter dependency for variable 'descriptor.V' (src/c/hog.cpp:114)." projectName="Hog_HLS" solutionName="solution1" date="2018-06-27T15:31:27.011+0300" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

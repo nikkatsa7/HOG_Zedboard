@@ -1,0 +1,1683 @@
+
+
+================================================================
+== Vivado HLS Report for 'computeHistogram1'
+================================================================
+* Date:           Wed Jun 27 15:31:28 2018
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        Hog_HLS
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   6.00|      5.12|        0.75|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |  347|  347|  347|  347|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                                       |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |               Loop Name               | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1                               |   72|   72|         1|          -|          -|    72|    no    |
+        |- Loop 2                               |    2|    2|         1|          -|          -|     2|    no    |
+        |- histogram_computeHistogram_label1_L  |  269|  269|        15|          1|          1|   256|    yes   |
+        +---------------------------------------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 15
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 19
+* Pipeline: 1
+  Pipeline-0: II = 1, D = 15, States = { 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	2  / (!tmp)
+	3  / (tmp)
+3 --> 
+	3  / (!exitcond4)
+	4  / (exitcond4)
+4 --> 
+	5  / true
+5 --> 
+	19  / (exitcond_flatten2)
+	6  / (!exitcond_flatten2)
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	4  / true
+19 --> 
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: StgValue_20 (25)  [1/1] 1.57ns  loc: src/c/hog.cpp:115
+:0  br label %1
+
+
+ <State 2>: 2.71ns
+ST_2: i (27)  [1/1] 0.00ns
+:0  %i = phi i7 [ 0, %0 ], [ %i_4, %2 ]
+
+ST_2: tmp (28)  [1/1] 1.97ns  loc: src/c/hog.cpp:115
+:1  %tmp = icmp eq i7 %i, -56
+
+ST_2: empty (29)  [1/1] 0.00ns
+:2  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 72, i64 72, i64 72)
+
+ST_2: i_4 (30)  [1/1] 1.72ns  loc: src/c/hog.cpp:115
+:3  %i_4 = add i7 %i, 1
+
+ST_2: StgValue_25 (31)  [1/1] 0.00ns  loc: src/c/hog.cpp:115
+:4  br i1 %tmp, label %.preheader.preheader, label %2
+
+ST_2: tmp_s (33)  [1/1] 0.00ns  loc: src/c/hog.cpp:116
+:0  %tmp_s = zext i7 %i to i64
+
+ST_2: descriptor_V_addr (34)  [1/1] 0.00ns  loc: src/c/hog.cpp:116
+:1  %descriptor_V_addr = getelementptr [72 x i15]* %descriptor_V, i64 0, i64 %tmp_s
+
+ST_2: StgValue_28 (35)  [1/1] 2.71ns  loc: src/c/hog.cpp:116
+:2  store i15 0, i15* %descriptor_V_addr, align 2
+
+ST_2: StgValue_29 (36)  [1/1] 0.00ns  loc: src/c/hog.cpp:115
+:3  br label %1
+
+ST_2: StgValue_30 (38)  [1/1] 1.57ns  loc: src/c/hog.cpp:118
+.preheader.preheader:0  br label %.preheader
+
+
+ <State 3>: 2.39ns
+ST_3: i1 (40)  [1/1] 0.00ns
+.preheader:0  %i1 = phi i2 [ %i_5, %3 ], [ 0, %.preheader.preheader ]
+
+ST_3: exitcond4 (41)  [1/1] 1.36ns  loc: src/c/hog.cpp:118
+.preheader:1  %exitcond4 = icmp eq i2 %i1, -2
+
+ST_3: empty_20 (42)  [1/1] 0.00ns
+.preheader:2  %empty_20 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)
+
+ST_3: i_5 (43)  [1/1] 0.80ns  loc: src/c/hog.cpp:118
+.preheader:3  %i_5 = add i2 %i1, 1
+
+ST_3: StgValue_35 (44)  [1/1] 0.00ns  loc: src/c/hog.cpp:118
+.preheader:4  br i1 %exitcond4, label %meminst.preheader, label %3
+
+ST_3: tmp_47 (46)  [1/1] 0.00ns  loc: src/c/hog.cpp:119
+:0  %tmp_47 = zext i2 %i1 to i64
+
+ST_3: sum_addr (47)  [1/1] 0.00ns  loc: src/c/hog.cpp:119
+:1  %sum_addr = getelementptr [2 x i32]* %sum, i64 0, i64 %tmp_47
+
+ST_3: StgValue_38 (48)  [1/1] 2.39ns  loc: src/c/hog.cpp:119
+:2  store i32 0, i32* %sum_addr, align 4
+
+ST_3: StgValue_39 (49)  [1/1] 0.00ns  loc: src/c/hog.cpp:118
+:3  br label %.preheader
+
+ST_3: StgValue_40 (51)  [1/1] 0.00ns  loc: src/c/hog.cpp:127
+meminst.preheader:0  call void (...)* @_ssdm_op_SpecMemCore([256 x i7]* @lut01, [1 x i8]* @p_str, [12 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_3: StgValue_41 (52)  [1/1] 0.00ns  loc: src/c/hog.cpp:130
+meminst.preheader:1  call void (...)* @_ssdm_op_SpecMemCore([256 x i8]* @lut12, [1 x i8]* @p_str, [12 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_3: StgValue_42 (53)  [1/1] 0.00ns  loc: src/c/hog.cpp:133
+meminst.preheader:2  call void (...)* @_ssdm_op_SpecMemCore([256 x i9]* @lut23, [1 x i8]* @p_str, [12 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_3: StgValue_43 (54)  [1/1] 0.00ns  loc: src/c/hog.cpp:136
+meminst.preheader:3  call void (...)* @_ssdm_op_SpecMemCore([256 x i11]* @lut34, [1 x i8]* @p_str, [12 x i8]* @p_str1, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_3: StgValue_44 (55)  [1/1] 1.57ns  loc: src/c/hog.cpp:139
+meminst.preheader:4  br label %4
+
+
+ <State 4>: 3.40ns
+ST_4: indvar_flatten1 (57)  [1/1] 0.00ns
+:0  %indvar_flatten1 = phi i9 [ 0, %meminst.preheader ], [ %indvar_flatten_next1, %._crit_edge22 ]
+
+ST_4: indvar_flatten (59)  [1/1] 0.00ns
+:2  %indvar_flatten = phi i9 [ 0, %meminst.preheader ], [ %indvar_flatten_next, %._crit_edge22 ]
+
+ST_4: exitcond_flatten2 (65)  [1/1] 2.03ns
+:8  %exitcond_flatten2 = icmp eq i9 %indvar_flatten1, -256
+
+ST_4: indvar_flatten_next1 (66)  [1/1] 1.84ns
+:9  %indvar_flatten_next1 = add i9 %indvar_flatten1, 1
+
+ST_4: exitcond_flatten (71)  [1/1] 2.03ns
+.reset8:2  %exitcond_flatten = icmp eq i9 %indvar_flatten, 128
+
+ST_4: indvar_flatten_op (471)  [1/1] 1.84ns
+._crit_edge22:26  %indvar_flatten_op = add i9 %indvar_flatten, 1
+
+ST_4: indvar_flatten_next (472)  [1/1] 1.37ns
+._crit_edge22:27  %indvar_flatten_next = select i1 %exitcond_flatten, i9 1, i9 %indvar_flatten_op
+
+
+ <State 5>: 4.46ns
+ST_5: bX (58)  [1/1] 0.00ns  loc: src/c/hog.cpp:140
+:1  %bX = phi i2 [ 0, %meminst.preheader ], [ %blkPosX_mid2_v_v, %._crit_edge22 ]
+
+ST_5: y (60)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+:3  %y = phi i5 [ 0, %meminst.preheader ], [ %y_mid2, %._crit_edge22 ]
+
+ST_5: x (61)  [1/1] 0.00ns
+:4  %x = phi i5 [ 0, %meminst.preheader ], [ %x_1, %._crit_edge22 ]
+
+ST_5: tmp_48 (62)  [1/1] 0.00ns  loc: src/c/hog.cpp:153
+:5  %tmp_48 = call i2 @_ssdm_op_PartSelect.i2.i5.i32.i32(i5 %y, i32 3, i32 4)
+
+ST_5: tmp_51 (63)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+:6  %tmp_51 = call i1 @_ssdm_op_BitSelect.i1.i5.i32(i5 %y, i32 3)
+
+ST_5: p_shl8 (64)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+:7  %p_shl8 = call i4 @_ssdm_op_BitConcatenate.i4.i1.i3(i1 %tmp_51, i3 0)
+
+ST_5: StgValue_58 (67)  [1/1] 0.00ns
+:10  br i1 %exitcond_flatten2, label %17, label %.reset8
+
+ST_5: y_mid (72)  [1/1] 1.37ns  loc: src/c/hog.cpp:142
+.reset8:3  %y_mid = select i1 %exitcond_flatten, i5 0, i5 %y
+
+ST_5: x_mid (73)  [1/1] 0.00ns  loc: src/c/hog.cpp:142 (grouped into LUT with out node x_mid2)
+.reset8:4  %x_mid = select i1 %exitcond_flatten, i5 0, i5 %x
+
+ST_5: bX_s (74)  [1/1] 0.80ns  loc: src/c/hog.cpp:139
+.reset8:5  %bX_s = add i2 1, %bX
+
+ST_5: blkPosX_mid2_v_v (75)  [1/1] 1.37ns  loc: src/c/hog.cpp:140
+.reset8:6  %blkPosX_mid2_v_v = select i1 %exitcond_flatten, i2 %bX_s, i2 %bX
+
+ST_5: tmp_52 (76)  [1/1] 0.00ns  loc: src/c/hog.cpp:140
+.reset8:7  %tmp_52 = trunc i2 %blkPosX_mid2_v_v to i1
+
+ST_5: tmp_51_mid2 (80)  [1/1] 0.00ns  loc: src/c/hog.cpp:171
+.reset8:11  %tmp_51_mid2 = zext i2 %blkPosX_mid2_v_v to i64
+
+ST_5: y_offset_cast_mid (81)  [1/1] 0.00ns  loc: src/c/hog.cpp:153 (grouped into LUT with out node y_offset_cast_mid2)
+.reset8:12  %y_offset_cast_mid = select i1 %exitcond_flatten, i2 0, i2 %tmp_48
+
+ST_5: p_shl8_mid (82)  [1/1] 0.00ns  loc: src/c/hog.cpp:169 (grouped into LUT with out node p_shl8_mid2)
+.reset8:13  %p_shl8_mid = select i1 %exitcond_flatten, i4 0, i4 %p_shl8
+
+ST_5: tmp_53 (83)  [1/1] 0.00ns  loc: src/c/hog.cpp:142 (grouped into LUT with out node tmp_53_mid)
+.reset8:14  %tmp_53 = call i1 @_ssdm_op_BitSelect.i1.i5.i32(i5 %x, i32 4)
+
+ST_5: rev (84)  [1/1] 0.00ns  loc: src/c/hog.cpp:142 (grouped into LUT with out node tmp_53_mid)
+.reset8:15  %rev = xor i1 %tmp_53, true
+
+ST_5: tmp_53_mid (85)  [1/1] 1.37ns  loc: src/c/hog.cpp:142 (out node of the LUT)
+.reset8:16  %tmp_53_mid = or i1 %exitcond_flatten, %rev
+
+ST_5: y_1_dup (86)  [1/1] 1.72ns  loc: src/c/hog.cpp:146
+.reset8:17  %y_1_dup = add i5 1, %y_mid
+
+ST_5: x_mid2 (88)  [1/1] 1.37ns  loc: src/c/hog.cpp:142 (out node of the LUT)
+.reset8:19  %x_mid2 = select i1 %tmp_53_mid, i5 %x_mid, i5 0
+
+ST_5: tmp_50 (89)  [1/1] 0.00ns  loc: src/c/hog.cpp:153 (grouped into LUT with out node y_offset_cast_mid2)
+.reset8:20  %tmp_50 = call i2 @_ssdm_op_PartSelect.i2.i5.i32.i32(i5 %y_1_dup, i32 3, i32 4)
+
+ST_5: y_offset_cast_mid2 (90)  [1/1] 1.37ns  loc: src/c/hog.cpp:153 (out node of the LUT)
+.reset8:21  %y_offset_cast_mid2 = select i1 %tmp_53_mid, i2 %y_offset_cast_mid, i2 %tmp_50
+
+ST_5: tmp_62 (92)  [1/1] 0.00ns  loc: src/c/hog.cpp:146 (grouped into LUT with out node p_shl8_mid2)
+.reset8:23  %tmp_62 = call i1 @_ssdm_op_BitSelect.i1.i5.i32(i5 %y_1_dup, i32 3)
+
+ST_5: p_shl8_mid1 (93)  [1/1] 0.00ns  loc: src/c/hog.cpp:169 (grouped into LUT with out node p_shl8_mid2)
+.reset8:24  %p_shl8_mid1 = call i4 @_ssdm_op_BitConcatenate.i4.i1.i3(i1 %tmp_62, i3 0)
+
+ST_5: p_shl8_mid2 (94)  [1/1] 1.37ns  loc: src/c/hog.cpp:169 (out node of the LUT)
+.reset8:25  %p_shl8_mid2 = select i1 %tmp_53_mid, i4 %p_shl8_mid, i4 %p_shl8_mid1
+
+ST_5: y_mid2 (95)  [1/1] 1.37ns  loc: src/c/hog.cpp:142
+.reset8:26  %y_mid2 = select i1 %tmp_53_mid, i5 %y_mid, i5 %y_1_dup
+
+ST_5: tmp_80 (452)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:7  %tmp_80 = call i1 @_ssdm_op_BitSelect.i1.i4.i32(i4 %p_shl8_mid2, i32 3)
+
+ST_5: sum_addr_1 (465)  [1/1] 0.00ns  loc: src/c/hog.cpp:171
+._crit_edge22:20  %sum_addr_1 = getelementptr [2 x i32]* %sum, i64 0, i64 %tmp_51_mid2
+
+ST_5: x_1 (470)  [1/1] 1.72ns  loc: src/c/hog.cpp:142
+._crit_edge22:25  %x_1 = add i5 %x_mid2, 2
+
+
+ <State 6>: 4.11ns
+ST_6: blkPosX_mid2 (77)  [1/1] 0.00ns  loc: src/c/hog.cpp:140
+.reset8:8  %blkPosX_mid2 = call i5 @_ssdm_op_BitConcatenate.i5.i1.i4(i1 %tmp_52, i4 0)
+
+ST_6: tmp_57_cast_mid2_v (78)  [1/1] 0.00ns  loc: src/c/hog.cpp:146 (grouped into LUT with out node tmp_54)
+.reset8:9  %tmp_57_cast_mid2_v = or i5 %blkPosX_mid2, 2
+
+ST_6: tmp_57_cast_mid2 (79)  [1/1] 0.00ns  loc: src/c/hog.cpp:146 (grouped into LUT with out node tmp_54)
+.reset8:10  %tmp_57_cast_mid2 = zext i5 %tmp_57_cast_mid2_v to i6
+
+ST_6: x_cast (96)  [1/1] 0.00ns  loc: src/c/hog.cpp:142 (grouped into LUT with out node tmp_54)
+.reset8:27  %x_cast = zext i5 %x_mid2 to i6
+
+ST_6: tmp_54 (99)  [1/1] 1.72ns  loc: src/c/hog.cpp:146 (out node of the LUT)
+.reset8:30  %tmp_54 = add i6 %tmp_57_cast_mid2, %x_cast
+
+ST_6: tmp_55 (100)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:31  %tmp_55 = zext i6 %tmp_54 to i64
+
+ST_6: image_buffer_1_addr (101)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:32  %image_buffer_1_addr = getelementptr [34 x i8]* %image_buffer_1, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_2_addr (102)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:33  %image_buffer_2_addr = getelementptr [34 x i8]* %image_buffer_2, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_3_addr (103)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:34  %image_buffer_3_addr = getelementptr [34 x i8]* %image_buffer_3, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_4_addr (104)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:35  %image_buffer_4_addr = getelementptr [34 x i8]* %image_buffer_4, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_5_addr (105)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:36  %image_buffer_5_addr = getelementptr [34 x i8]* %image_buffer_5, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_6_addr (106)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:37  %image_buffer_6_addr = getelementptr [34 x i8]* %image_buffer_6, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_7_addr (107)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:38  %image_buffer_7_addr = getelementptr [34 x i8]* %image_buffer_7, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_8_addr (108)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:39  %image_buffer_8_addr = getelementptr [34 x i8]* %image_buffer_8, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_9_addr (109)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:40  %image_buffer_9_addr = getelementptr [34 x i8]* %image_buffer_9, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_10_add_2 (110)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:41  %image_buffer_10_add_2 = getelementptr [34 x i8]* %image_buffer_10, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_11_add_2 (111)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:42  %image_buffer_11_add_2 = getelementptr [34 x i8]* %image_buffer_11, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_12_add_2 (112)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:43  %image_buffer_12_add_2 = getelementptr [34 x i8]* %image_buffer_12, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_13_add_2 (113)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:44  %image_buffer_13_add_2 = getelementptr [34 x i8]* %image_buffer_13, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_14_add_2 (114)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:45  %image_buffer_14_add_2 = getelementptr [34 x i8]* %image_buffer_14, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_15_add_2 (115)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:46  %image_buffer_15_add_2 = getelementptr [34 x i8]* %image_buffer_15, i64 0, i64 %tmp_55
+
+ST_6: image_buffer_16_add_2 (116)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+.reset8:47  %image_buffer_16_add_2 = getelementptr [34 x i8]* %image_buffer_16, i64 0, i64 %tmp_55
+
+ST_6: StgValue_103 (117)  [1/1] 1.94ns  loc: src/c/hog.cpp:146
+.reset8:48  switch i5 %y_mid2, label %branch70 [
+    i5 0, label %branch55
+    i5 1, label %branch56
+    i5 2, label %branch57
+    i5 3, label %branch58
+    i5 4, label %branch59
+    i5 5, label %branch60
+    i5 6, label %branch61
+    i5 7, label %branch62
+    i5 8, label %branch63
+    i5 9, label %branch64
+    i5 10, label %branch65
+    i5 11, label %branch66
+    i5 12, label %branch67
+    i5 13, label %branch68
+    i5 14, label %branch69
+  ]
+
+ST_6: image_buffer_15_loa_3 (119)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch69:0  %image_buffer_15_loa_3 = load i8* %image_buffer_15_add_2, align 1
+
+ST_6: image_buffer_14_loa_3 (122)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch68:0  %image_buffer_14_loa_3 = load i8* %image_buffer_14_add_2, align 1
+
+ST_6: image_buffer_13_loa_3 (125)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch67:0  %image_buffer_13_loa_3 = load i8* %image_buffer_13_add_2, align 1
+
+ST_6: image_buffer_12_loa_3 (128)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch66:0  %image_buffer_12_loa_3 = load i8* %image_buffer_12_add_2, align 1
+
+ST_6: image_buffer_11_loa_3 (131)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch65:0  %image_buffer_11_loa_3 = load i8* %image_buffer_11_add_2, align 1
+
+ST_6: image_buffer_10_loa_3 (134)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch64:0  %image_buffer_10_loa_3 = load i8* %image_buffer_10_add_2, align 1
+
+ST_6: image_buffer_9_load (137)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch63:0  %image_buffer_9_load = load i8* %image_buffer_9_addr, align 1
+
+ST_6: image_buffer_8_load (140)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch62:0  %image_buffer_8_load = load i8* %image_buffer_8_addr, align 1
+
+ST_6: image_buffer_7_load (143)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch61:0  %image_buffer_7_load = load i8* %image_buffer_7_addr, align 1
+
+ST_6: image_buffer_6_load (146)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch60:0  %image_buffer_6_load = load i8* %image_buffer_6_addr, align 1
+
+ST_6: image_buffer_5_load (149)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch59:0  %image_buffer_5_load = load i8* %image_buffer_5_addr, align 1
+
+ST_6: image_buffer_4_load (152)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch58:0  %image_buffer_4_load = load i8* %image_buffer_4_addr, align 1
+
+ST_6: image_buffer_3_load (155)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch57:0  %image_buffer_3_load = load i8* %image_buffer_3_addr, align 1
+
+ST_6: image_buffer_2_load (158)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch56:0  %image_buffer_2_load = load i8* %image_buffer_2_addr, align 1
+
+ST_6: image_buffer_1_load (161)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch55:0  %image_buffer_1_load = load i8* %image_buffer_1_addr, align 1
+
+ST_6: image_buffer_16_loa_2 (164)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch70:0  %image_buffer_16_loa_2 = load i8* %image_buffer_16_add_2, align 1
+
+ST_6: tmp_56 (169)  [1/1] 1.72ns  loc: src/c/hog.cpp:146
+:2  %tmp_56 = add i5 %x_mid2, %blkPosX_mid2
+
+ST_6: tmp_57 (170)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:3  %tmp_57 = zext i5 %tmp_56 to i64
+
+ST_6: image_buffer_1_addr_1 (171)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:4  %image_buffer_1_addr_1 = getelementptr [34 x i8]* %image_buffer_1, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_2_addr_1 (172)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:5  %image_buffer_2_addr_1 = getelementptr [34 x i8]* %image_buffer_2, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_3_addr_1 (173)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:6  %image_buffer_3_addr_1 = getelementptr [34 x i8]* %image_buffer_3, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_4_addr_1 (174)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:7  %image_buffer_4_addr_1 = getelementptr [34 x i8]* %image_buffer_4, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_5_addr_1 (175)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:8  %image_buffer_5_addr_1 = getelementptr [34 x i8]* %image_buffer_5, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_6_addr_1 (176)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:9  %image_buffer_6_addr_1 = getelementptr [34 x i8]* %image_buffer_6, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_7_addr_1 (177)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:10  %image_buffer_7_addr_1 = getelementptr [34 x i8]* %image_buffer_7, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_8_addr_1 (178)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:11  %image_buffer_8_addr_1 = getelementptr [34 x i8]* %image_buffer_8, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_9_addr_1 (179)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:12  %image_buffer_9_addr_1 = getelementptr [34 x i8]* %image_buffer_9, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_10_add (180)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:13  %image_buffer_10_add = getelementptr [34 x i8]* %image_buffer_10, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_11_add (181)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:14  %image_buffer_11_add = getelementptr [34 x i8]* %image_buffer_11, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_12_add (182)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:15  %image_buffer_12_add = getelementptr [34 x i8]* %image_buffer_12, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_13_add (183)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:16  %image_buffer_13_add = getelementptr [34 x i8]* %image_buffer_13, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_14_add (184)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:17  %image_buffer_14_add = getelementptr [34 x i8]* %image_buffer_14, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_15_add (185)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:18  %image_buffer_15_add = getelementptr [34 x i8]* %image_buffer_15, i64 0, i64 %tmp_57
+
+ST_6: image_buffer_16_add (186)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:19  %image_buffer_16_add = getelementptr [34 x i8]* %image_buffer_16, i64 0, i64 %tmp_57
+
+ST_6: StgValue_138 (187)  [1/1] 1.94ns  loc: src/c/hog.cpp:146
+:20  switch i5 %y_mid2, label %branch52 [
+    i5 0, label %branch37
+    i5 1, label %branch38
+    i5 2, label %branch39
+    i5 3, label %branch40
+    i5 4, label %branch41
+    i5 5, label %branch42
+    i5 6, label %branch43
+    i5 7, label %branch44
+    i5 8, label %branch45
+    i5 9, label %branch46
+    i5 10, label %branch47
+    i5 11, label %branch48
+    i5 12, label %branch49
+    i5 13, label %branch50
+    i5 14, label %branch51
+  ]
+
+ST_6: image_buffer_15_loa_2 (189)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch51:0  %image_buffer_15_loa_2 = load i8* %image_buffer_15_add, align 1
+
+ST_6: image_buffer_14_loa_2 (192)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch50:0  %image_buffer_14_loa_2 = load i8* %image_buffer_14_add, align 1
+
+ST_6: image_buffer_13_loa_2 (195)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch49:0  %image_buffer_13_loa_2 = load i8* %image_buffer_13_add, align 1
+
+ST_6: image_buffer_12_loa_2 (198)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch48:0  %image_buffer_12_loa_2 = load i8* %image_buffer_12_add, align 1
+
+ST_6: image_buffer_11_loa_2 (201)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch47:0  %image_buffer_11_loa_2 = load i8* %image_buffer_11_add, align 1
+
+ST_6: image_buffer_10_loa_2 (204)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch46:0  %image_buffer_10_loa_2 = load i8* %image_buffer_10_add, align 1
+
+ST_6: image_buffer_9_load_1 (207)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch45:0  %image_buffer_9_load_1 = load i8* %image_buffer_9_addr_1, align 1
+
+ST_6: image_buffer_8_load_1 (210)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch44:0  %image_buffer_8_load_1 = load i8* %image_buffer_8_addr_1, align 1
+
+ST_6: image_buffer_7_load_1 (213)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch43:0  %image_buffer_7_load_1 = load i8* %image_buffer_7_addr_1, align 1
+
+ST_6: image_buffer_6_load_1 (216)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch42:0  %image_buffer_6_load_1 = load i8* %image_buffer_6_addr_1, align 1
+
+ST_6: image_buffer_5_load_1 (219)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch41:0  %image_buffer_5_load_1 = load i8* %image_buffer_5_addr_1, align 1
+
+ST_6: image_buffer_4_load_1 (222)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch40:0  %image_buffer_4_load_1 = load i8* %image_buffer_4_addr_1, align 1
+
+ST_6: image_buffer_3_load_1 (225)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch39:0  %image_buffer_3_load_1 = load i8* %image_buffer_3_addr_1, align 1
+
+ST_6: image_buffer_2_load_1 (228)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch38:0  %image_buffer_2_load_1 = load i8* %image_buffer_2_addr_1, align 1
+
+ST_6: image_buffer_1_load_1 (231)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch37:0  %image_buffer_1_load_1 = load i8* %image_buffer_1_addr_1, align 1
+
+ST_6: image_buffer_16_loa_1 (234)  [2/2] 2.39ns  loc: src/c/hog.cpp:146
+branch52:0  %image_buffer_16_loa_1 = load i8* %image_buffer_16_add, align 1
+
+ST_6: tmp_58 (242)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:5  %tmp_58 = or i5 %tmp_56, 1
+
+ST_6: tmp_59 (243)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:6  %tmp_59 = zext i5 %tmp_58 to i64
+
+ST_6: image_buffer_2_addr_2 (244)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:7  %image_buffer_2_addr_2 = getelementptr [34 x i8]* %image_buffer_2, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_3_addr_2 (245)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:8  %image_buffer_3_addr_2 = getelementptr [34 x i8]* %image_buffer_3, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_4_addr_2 (246)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:9  %image_buffer_4_addr_2 = getelementptr [34 x i8]* %image_buffer_4, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_5_addr_2 (247)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:10  %image_buffer_5_addr_2 = getelementptr [34 x i8]* %image_buffer_5, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_6_addr_2 (248)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:11  %image_buffer_6_addr_2 = getelementptr [34 x i8]* %image_buffer_6, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_7_addr_2 (249)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:12  %image_buffer_7_addr_2 = getelementptr [34 x i8]* %image_buffer_7, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_8_addr_2 (250)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:13  %image_buffer_8_addr_2 = getelementptr [34 x i8]* %image_buffer_8, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_9_addr_2 (251)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:14  %image_buffer_9_addr_2 = getelementptr [34 x i8]* %image_buffer_9, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_10_add_1 (252)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:15  %image_buffer_10_add_1 = getelementptr [34 x i8]* %image_buffer_10, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_11_add_1 (253)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:16  %image_buffer_11_add_1 = getelementptr [34 x i8]* %image_buffer_11, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_12_add_1 (254)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:17  %image_buffer_12_add_1 = getelementptr [34 x i8]* %image_buffer_12, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_13_add_1 (255)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:18  %image_buffer_13_add_1 = getelementptr [34 x i8]* %image_buffer_13, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_14_add_1 (256)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:19  %image_buffer_14_add_1 = getelementptr [34 x i8]* %image_buffer_14, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_15_add_1 (257)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:20  %image_buffer_15_add_1 = getelementptr [34 x i8]* %image_buffer_15, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_16_add_1 (258)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:21  %image_buffer_16_add_1 = getelementptr [34 x i8]* %image_buffer_16, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_17_add (259)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:22  %image_buffer_17_add = getelementptr [34 x i8]* %image_buffer_17, i64 0, i64 %tmp_59
+
+ST_6: StgValue_173 (260)  [1/1] 1.94ns  loc: src/c/hog.cpp:147
+:23  switch i5 %y_mid2, label %branch35 [
+    i5 0, label %branch20
+    i5 1, label %branch21
+    i5 2, label %branch22
+    i5 3, label %branch23
+    i5 4, label %branch24
+    i5 5, label %branch25
+    i5 6, label %branch26
+    i5 7, label %branch27
+    i5 8, label %branch28
+    i5 9, label %branch29
+    i5 10, label %branch30
+    i5 11, label %branch31
+    i5 12, label %branch32
+    i5 13, label %branch33
+    i5 14, label %branch34
+  ]
+
+ST_6: image_buffer_16_loa (262)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch34:0  %image_buffer_16_loa = load i8* %image_buffer_16_add_1, align 1
+
+ST_6: image_buffer_15_loa_1 (265)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch33:0  %image_buffer_15_loa_1 = load i8* %image_buffer_15_add_1, align 1
+
+ST_6: image_buffer_14_loa_1 (268)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch32:0  %image_buffer_14_loa_1 = load i8* %image_buffer_14_add_1, align 1
+
+ST_6: image_buffer_13_loa_1 (271)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch31:0  %image_buffer_13_loa_1 = load i8* %image_buffer_13_add_1, align 1
+
+ST_6: image_buffer_12_loa_1 (274)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch30:0  %image_buffer_12_loa_1 = load i8* %image_buffer_12_add_1, align 1
+
+ST_6: image_buffer_11_loa_1 (277)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch29:0  %image_buffer_11_loa_1 = load i8* %image_buffer_11_add_1, align 1
+
+ST_6: image_buffer_10_loa_1 (280)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch28:0  %image_buffer_10_loa_1 = load i8* %image_buffer_10_add_1, align 1
+
+ST_6: image_buffer_9_load_2 (283)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch27:0  %image_buffer_9_load_2 = load i8* %image_buffer_9_addr_2, align 1
+
+ST_6: image_buffer_8_load_2 (286)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch26:0  %image_buffer_8_load_2 = load i8* %image_buffer_8_addr_2, align 1
+
+ST_6: image_buffer_7_load_2 (289)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch25:0  %image_buffer_7_load_2 = load i8* %image_buffer_7_addr_2, align 1
+
+ST_6: image_buffer_6_load_2 (292)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch24:0  %image_buffer_6_load_2 = load i8* %image_buffer_6_addr_2, align 1
+
+ST_6: image_buffer_5_load_2 (295)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch23:0  %image_buffer_5_load_2 = load i8* %image_buffer_5_addr_2, align 1
+
+ST_6: image_buffer_4_load_2 (298)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch22:0  %image_buffer_4_load_2 = load i8* %image_buffer_4_addr_2, align 1
+
+ST_6: image_buffer_3_load_2 (301)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch21:0  %image_buffer_3_load_2 = load i8* %image_buffer_3_addr_2, align 1
+
+ST_6: image_buffer_2_load_2 (304)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch20:0  %image_buffer_2_load_2 = load i8* %image_buffer_2_addr_2, align 1
+
+ST_6: image_buffer_17_loa (307)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch35:0  %image_buffer_17_loa = load i8* %image_buffer_17_add, align 1
+
+ST_6: image_buffer_0_addr (312)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:2  %image_buffer_0_addr = getelementptr [34 x i8]* %image_buffer_0, i64 0, i64 %tmp_59
+
+ST_6: image_buffer_1_addr_2 (313)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:3  %image_buffer_1_addr_2 = getelementptr [34 x i8]* %image_buffer_1, i64 0, i64 %tmp_59
+
+ST_6: StgValue_192 (314)  [1/1] 1.94ns  loc: src/c/hog.cpp:147
+:4  switch i5 %y_mid2, label %branch15 [
+    i5 0, label %branch0
+    i5 1, label %branch1
+    i5 2, label %branch2
+    i5 3, label %branch3
+    i5 4, label %branch4
+    i5 5, label %branch5
+    i5 6, label %branch6
+    i5 7, label %branch7
+    i5 8, label %branch8
+    i5 9, label %branch9
+    i5 10, label %branch10
+    i5 11, label %branch11
+    i5 12, label %branch12
+    i5 13, label %branch13
+    i5 14, label %branch14
+  ]
+
+ST_6: image_buffer_14_loa (316)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch14:0  %image_buffer_14_loa = load i8* %image_buffer_14_add_1, align 1
+
+ST_6: image_buffer_13_loa (319)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch13:0  %image_buffer_13_loa = load i8* %image_buffer_13_add_1, align 1
+
+ST_6: image_buffer_12_loa (322)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch12:0  %image_buffer_12_loa = load i8* %image_buffer_12_add_1, align 1
+
+ST_6: image_buffer_11_loa (325)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch11:0  %image_buffer_11_loa = load i8* %image_buffer_11_add_1, align 1
+
+ST_6: image_buffer_10_loa (328)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch10:0  %image_buffer_10_loa = load i8* %image_buffer_10_add_1, align 1
+
+ST_6: image_buffer_9_load_3 (331)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch9:0  %image_buffer_9_load_3 = load i8* %image_buffer_9_addr_2, align 1
+
+ST_6: image_buffer_8_load_3 (334)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch8:0  %image_buffer_8_load_3 = load i8* %image_buffer_8_addr_2, align 1
+
+ST_6: image_buffer_7_load_3 (337)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch7:0  %image_buffer_7_load_3 = load i8* %image_buffer_7_addr_2, align 1
+
+ST_6: image_buffer_6_load_3 (340)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch6:0  %image_buffer_6_load_3 = load i8* %image_buffer_6_addr_2, align 1
+
+ST_6: image_buffer_5_load_3 (343)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch5:0  %image_buffer_5_load_3 = load i8* %image_buffer_5_addr_2, align 1
+
+ST_6: image_buffer_4_load_3 (346)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch4:0  %image_buffer_4_load_3 = load i8* %image_buffer_4_addr_2, align 1
+
+ST_6: image_buffer_3_load_3 (349)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch3:0  %image_buffer_3_load_3 = load i8* %image_buffer_3_addr_2, align 1
+
+ST_6: image_buffer_2_load_3 (352)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch2:0  %image_buffer_2_load_3 = load i8* %image_buffer_2_addr_2, align 1
+
+ST_6: image_buffer_1_load_2 (355)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch1:0  %image_buffer_1_load_2 = load i8* %image_buffer_1_addr_2, align 1
+
+ST_6: image_buffer_0_load (358)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch0:0  %image_buffer_0_load = load i8* %image_buffer_0_addr, align 1
+
+ST_6: image_buffer_15_loa (361)  [2/2] 2.39ns  loc: src/c/hog.cpp:147
+branch15:0  %image_buffer_15_loa = load i8* %image_buffer_15_add_1, align 1
+
+ST_6: tmp_79 (446)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+._crit_edge22:1  %tmp_79 = call i1 @_ssdm_op_BitSelect.i1.i5.i32(i5 %x_mid2, i32 3)
+
+
+ <State 7>: 4.62ns
+ST_7: image_buffer_15_loa_3 (119)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch69:0  %image_buffer_15_loa_3 = load i8* %image_buffer_15_add_2, align 1
+
+ST_7: StgValue_211 (120)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch69:1  br label %5
+
+ST_7: image_buffer_14_loa_3 (122)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch68:0  %image_buffer_14_loa_3 = load i8* %image_buffer_14_add_2, align 1
+
+ST_7: StgValue_213 (123)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch68:1  br label %5
+
+ST_7: image_buffer_13_loa_3 (125)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch67:0  %image_buffer_13_loa_3 = load i8* %image_buffer_13_add_2, align 1
+
+ST_7: StgValue_215 (126)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch67:1  br label %5
+
+ST_7: image_buffer_12_loa_3 (128)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch66:0  %image_buffer_12_loa_3 = load i8* %image_buffer_12_add_2, align 1
+
+ST_7: StgValue_217 (129)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch66:1  br label %5
+
+ST_7: image_buffer_11_loa_3 (131)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch65:0  %image_buffer_11_loa_3 = load i8* %image_buffer_11_add_2, align 1
+
+ST_7: StgValue_219 (132)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch65:1  br label %5
+
+ST_7: image_buffer_10_loa_3 (134)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch64:0  %image_buffer_10_loa_3 = load i8* %image_buffer_10_add_2, align 1
+
+ST_7: StgValue_221 (135)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch64:1  br label %5
+
+ST_7: image_buffer_9_load (137)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch63:0  %image_buffer_9_load = load i8* %image_buffer_9_addr, align 1
+
+ST_7: StgValue_223 (138)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch63:1  br label %5
+
+ST_7: image_buffer_8_load (140)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch62:0  %image_buffer_8_load = load i8* %image_buffer_8_addr, align 1
+
+ST_7: StgValue_225 (141)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch62:1  br label %5
+
+ST_7: image_buffer_7_load (143)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch61:0  %image_buffer_7_load = load i8* %image_buffer_7_addr, align 1
+
+ST_7: StgValue_227 (144)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch61:1  br label %5
+
+ST_7: image_buffer_6_load (146)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch60:0  %image_buffer_6_load = load i8* %image_buffer_6_addr, align 1
+
+ST_7: StgValue_229 (147)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch60:1  br label %5
+
+ST_7: image_buffer_5_load (149)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch59:0  %image_buffer_5_load = load i8* %image_buffer_5_addr, align 1
+
+ST_7: StgValue_231 (150)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch59:1  br label %5
+
+ST_7: image_buffer_4_load (152)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch58:0  %image_buffer_4_load = load i8* %image_buffer_4_addr, align 1
+
+ST_7: StgValue_233 (153)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch58:1  br label %5
+
+ST_7: image_buffer_3_load (155)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch57:0  %image_buffer_3_load = load i8* %image_buffer_3_addr, align 1
+
+ST_7: StgValue_235 (156)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch57:1  br label %5
+
+ST_7: image_buffer_2_load (158)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch56:0  %image_buffer_2_load = load i8* %image_buffer_2_addr, align 1
+
+ST_7: StgValue_237 (159)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch56:1  br label %5
+
+ST_7: image_buffer_1_load (161)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch55:0  %image_buffer_1_load = load i8* %image_buffer_1_addr, align 1
+
+ST_7: StgValue_239 (162)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch55:1  br label %5
+
+ST_7: image_buffer_16_loa_2 (164)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch70:0  %image_buffer_16_loa_2 = load i8* %image_buffer_16_add_2, align 1
+
+ST_7: StgValue_241 (165)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch70:1  br label %5
+
+ST_7: image_buffer_15_loa_2 (189)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch51:0  %image_buffer_15_loa_2 = load i8* %image_buffer_15_add, align 1
+
+ST_7: StgValue_243 (190)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch51:1  br label %6
+
+ST_7: image_buffer_14_loa_2 (192)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch50:0  %image_buffer_14_loa_2 = load i8* %image_buffer_14_add, align 1
+
+ST_7: StgValue_245 (193)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch50:1  br label %6
+
+ST_7: image_buffer_13_loa_2 (195)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch49:0  %image_buffer_13_loa_2 = load i8* %image_buffer_13_add, align 1
+
+ST_7: StgValue_247 (196)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch49:1  br label %6
+
+ST_7: image_buffer_12_loa_2 (198)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch48:0  %image_buffer_12_loa_2 = load i8* %image_buffer_12_add, align 1
+
+ST_7: StgValue_249 (199)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch48:1  br label %6
+
+ST_7: image_buffer_11_loa_2 (201)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch47:0  %image_buffer_11_loa_2 = load i8* %image_buffer_11_add, align 1
+
+ST_7: StgValue_251 (202)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch47:1  br label %6
+
+ST_7: image_buffer_10_loa_2 (204)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch46:0  %image_buffer_10_loa_2 = load i8* %image_buffer_10_add, align 1
+
+ST_7: StgValue_253 (205)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch46:1  br label %6
+
+ST_7: image_buffer_9_load_1 (207)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch45:0  %image_buffer_9_load_1 = load i8* %image_buffer_9_addr_1, align 1
+
+ST_7: StgValue_255 (208)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch45:1  br label %6
+
+ST_7: image_buffer_8_load_1 (210)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch44:0  %image_buffer_8_load_1 = load i8* %image_buffer_8_addr_1, align 1
+
+ST_7: StgValue_257 (211)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch44:1  br label %6
+
+ST_7: image_buffer_7_load_1 (213)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch43:0  %image_buffer_7_load_1 = load i8* %image_buffer_7_addr_1, align 1
+
+ST_7: StgValue_259 (214)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch43:1  br label %6
+
+ST_7: image_buffer_6_load_1 (216)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch42:0  %image_buffer_6_load_1 = load i8* %image_buffer_6_addr_1, align 1
+
+ST_7: StgValue_261 (217)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch42:1  br label %6
+
+ST_7: image_buffer_5_load_1 (219)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch41:0  %image_buffer_5_load_1 = load i8* %image_buffer_5_addr_1, align 1
+
+ST_7: StgValue_263 (220)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch41:1  br label %6
+
+ST_7: image_buffer_4_load_1 (222)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch40:0  %image_buffer_4_load_1 = load i8* %image_buffer_4_addr_1, align 1
+
+ST_7: StgValue_265 (223)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch40:1  br label %6
+
+ST_7: image_buffer_3_load_1 (225)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch39:0  %image_buffer_3_load_1 = load i8* %image_buffer_3_addr_1, align 1
+
+ST_7: StgValue_267 (226)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch39:1  br label %6
+
+ST_7: image_buffer_2_load_1 (228)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch38:0  %image_buffer_2_load_1 = load i8* %image_buffer_2_addr_1, align 1
+
+ST_7: StgValue_269 (229)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch38:1  br label %6
+
+ST_7: image_buffer_1_load_1 (231)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch37:0  %image_buffer_1_load_1 = load i8* %image_buffer_1_addr_1, align 1
+
+ST_7: StgValue_271 (232)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch37:1  br label %6
+
+ST_7: image_buffer_16_loa_1 (234)  [1/2] 2.39ns  loc: src/c/hog.cpp:146
+branch52:0  %image_buffer_16_loa_1 = load i8* %image_buffer_16_add, align 1
+
+ST_7: StgValue_273 (235)  [1/1] 2.23ns  loc: src/c/hog.cpp:146
+branch52:1  br label %6
+
+ST_7: image_buffer_16_loa (262)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch34:0  %image_buffer_16_loa = load i8* %image_buffer_16_add_1, align 1
+
+ST_7: StgValue_275 (263)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch34:1  br label %7
+
+ST_7: image_buffer_15_loa_1 (265)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch33:0  %image_buffer_15_loa_1 = load i8* %image_buffer_15_add_1, align 1
+
+ST_7: StgValue_277 (266)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch33:1  br label %7
+
+ST_7: image_buffer_14_loa_1 (268)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch32:0  %image_buffer_14_loa_1 = load i8* %image_buffer_14_add_1, align 1
+
+ST_7: StgValue_279 (269)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch32:1  br label %7
+
+ST_7: image_buffer_13_loa_1 (271)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch31:0  %image_buffer_13_loa_1 = load i8* %image_buffer_13_add_1, align 1
+
+ST_7: StgValue_281 (272)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch31:1  br label %7
+
+ST_7: image_buffer_12_loa_1 (274)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch30:0  %image_buffer_12_loa_1 = load i8* %image_buffer_12_add_1, align 1
+
+ST_7: StgValue_283 (275)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch30:1  br label %7
+
+ST_7: image_buffer_11_loa_1 (277)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch29:0  %image_buffer_11_loa_1 = load i8* %image_buffer_11_add_1, align 1
+
+ST_7: StgValue_285 (278)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch29:1  br label %7
+
+ST_7: image_buffer_10_loa_1 (280)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch28:0  %image_buffer_10_loa_1 = load i8* %image_buffer_10_add_1, align 1
+
+ST_7: StgValue_287 (281)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch28:1  br label %7
+
+ST_7: image_buffer_9_load_2 (283)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch27:0  %image_buffer_9_load_2 = load i8* %image_buffer_9_addr_2, align 1
+
+ST_7: StgValue_289 (284)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch27:1  br label %7
+
+ST_7: image_buffer_8_load_2 (286)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch26:0  %image_buffer_8_load_2 = load i8* %image_buffer_8_addr_2, align 1
+
+ST_7: StgValue_291 (287)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch26:1  br label %7
+
+ST_7: image_buffer_7_load_2 (289)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch25:0  %image_buffer_7_load_2 = load i8* %image_buffer_7_addr_2, align 1
+
+ST_7: StgValue_293 (290)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch25:1  br label %7
+
+ST_7: image_buffer_6_load_2 (292)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch24:0  %image_buffer_6_load_2 = load i8* %image_buffer_6_addr_2, align 1
+
+ST_7: StgValue_295 (293)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch24:1  br label %7
+
+ST_7: image_buffer_5_load_2 (295)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch23:0  %image_buffer_5_load_2 = load i8* %image_buffer_5_addr_2, align 1
+
+ST_7: StgValue_297 (296)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch23:1  br label %7
+
+ST_7: image_buffer_4_load_2 (298)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch22:0  %image_buffer_4_load_2 = load i8* %image_buffer_4_addr_2, align 1
+
+ST_7: StgValue_299 (299)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch22:1  br label %7
+
+ST_7: image_buffer_3_load_2 (301)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch21:0  %image_buffer_3_load_2 = load i8* %image_buffer_3_addr_2, align 1
+
+ST_7: StgValue_301 (302)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch21:1  br label %7
+
+ST_7: image_buffer_2_load_2 (304)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch20:0  %image_buffer_2_load_2 = load i8* %image_buffer_2_addr_2, align 1
+
+ST_7: StgValue_303 (305)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch20:1  br label %7
+
+ST_7: image_buffer_17_loa (307)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch35:0  %image_buffer_17_loa = load i8* %image_buffer_17_add, align 1
+
+ST_7: StgValue_305 (308)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch35:1  br label %7
+
+ST_7: image_buffer_14_loa (316)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch14:0  %image_buffer_14_loa = load i8* %image_buffer_14_add_1, align 1
+
+ST_7: StgValue_307 (317)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch14:1  br label %8
+
+ST_7: image_buffer_13_loa (319)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch13:0  %image_buffer_13_loa = load i8* %image_buffer_13_add_1, align 1
+
+ST_7: StgValue_309 (320)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch13:1  br label %8
+
+ST_7: image_buffer_12_loa (322)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch12:0  %image_buffer_12_loa = load i8* %image_buffer_12_add_1, align 1
+
+ST_7: StgValue_311 (323)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch12:1  br label %8
+
+ST_7: image_buffer_11_loa (325)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch11:0  %image_buffer_11_loa = load i8* %image_buffer_11_add_1, align 1
+
+ST_7: StgValue_313 (326)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch11:1  br label %8
+
+ST_7: image_buffer_10_loa (328)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch10:0  %image_buffer_10_loa = load i8* %image_buffer_10_add_1, align 1
+
+ST_7: StgValue_315 (329)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch10:1  br label %8
+
+ST_7: image_buffer_9_load_3 (331)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch9:0  %image_buffer_9_load_3 = load i8* %image_buffer_9_addr_2, align 1
+
+ST_7: StgValue_317 (332)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch9:1  br label %8
+
+ST_7: image_buffer_8_load_3 (334)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch8:0  %image_buffer_8_load_3 = load i8* %image_buffer_8_addr_2, align 1
+
+ST_7: StgValue_319 (335)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch8:1  br label %8
+
+ST_7: image_buffer_7_load_3 (337)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch7:0  %image_buffer_7_load_3 = load i8* %image_buffer_7_addr_2, align 1
+
+ST_7: StgValue_321 (338)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch7:1  br label %8
+
+ST_7: image_buffer_6_load_3 (340)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch6:0  %image_buffer_6_load_3 = load i8* %image_buffer_6_addr_2, align 1
+
+ST_7: StgValue_323 (341)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch6:1  br label %8
+
+ST_7: image_buffer_5_load_3 (343)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch5:0  %image_buffer_5_load_3 = load i8* %image_buffer_5_addr_2, align 1
+
+ST_7: StgValue_325 (344)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch5:1  br label %8
+
+ST_7: image_buffer_4_load_3 (346)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch4:0  %image_buffer_4_load_3 = load i8* %image_buffer_4_addr_2, align 1
+
+ST_7: StgValue_327 (347)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch4:1  br label %8
+
+ST_7: image_buffer_3_load_3 (349)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch3:0  %image_buffer_3_load_3 = load i8* %image_buffer_3_addr_2, align 1
+
+ST_7: StgValue_329 (350)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch3:1  br label %8
+
+ST_7: image_buffer_2_load_3 (352)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch2:0  %image_buffer_2_load_3 = load i8* %image_buffer_2_addr_2, align 1
+
+ST_7: StgValue_331 (353)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch2:1  br label %8
+
+ST_7: image_buffer_1_load_2 (355)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch1:0  %image_buffer_1_load_2 = load i8* %image_buffer_1_addr_2, align 1
+
+ST_7: StgValue_333 (356)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch1:1  br label %8
+
+ST_7: image_buffer_0_load (358)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch0:0  %image_buffer_0_load = load i8* %image_buffer_0_addr, align 1
+
+ST_7: StgValue_335 (359)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch0:1  br label %8
+
+ST_7: image_buffer_15_loa (361)  [1/2] 2.39ns  loc: src/c/hog.cpp:147
+branch15:0  %image_buffer_15_loa = load i8* %image_buffer_15_add_1, align 1
+
+ST_7: StgValue_337 (362)  [1/1] 2.23ns  loc: src/c/hog.cpp:147
+branch15:1  br label %8
+
+
+ <State 8>: 5.12ns
+ST_8: image_buffer_load_ph (167)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:0  %image_buffer_load_ph = phi i8 [ %image_buffer_1_load, %branch55 ], [ %image_buffer_2_load, %branch56 ], [ %image_buffer_3_load, %branch57 ], [ %image_buffer_4_load, %branch58 ], [ %image_buffer_5_load, %branch59 ], [ %image_buffer_6_load, %branch60 ], [ %image_buffer_7_load, %branch61 ], [ %image_buffer_8_load, %branch62 ], [ %image_buffer_9_load, %branch63 ], [ %image_buffer_10_loa_3, %branch64 ], [ %image_buffer_11_loa_3, %branch65 ], [ %image_buffer_12_loa_3, %branch66 ], [ %image_buffer_13_loa_3, %branch67 ], [ %image_buffer_14_loa_3, %branch68 ], [ %image_buffer_15_loa_3, %branch69 ], [ %image_buffer_16_loa_2, %branch70 ]
+
+ST_8: tmp_68_cast (168)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:1  %tmp_68_cast = zext i8 %image_buffer_load_ph to i9
+
+ST_8: image_buffer_load_1_s (237)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:0  %image_buffer_load_1_s = phi i8 [ %image_buffer_1_load_1, %branch37 ], [ %image_buffer_2_load_1, %branch38 ], [ %image_buffer_3_load_1, %branch39 ], [ %image_buffer_4_load_1, %branch40 ], [ %image_buffer_5_load_1, %branch41 ], [ %image_buffer_6_load_1, %branch42 ], [ %image_buffer_7_load_1, %branch43 ], [ %image_buffer_8_load_1, %branch44 ], [ %image_buffer_9_load_1, %branch45 ], [ %image_buffer_10_loa_2, %branch46 ], [ %image_buffer_11_loa_2, %branch47 ], [ %image_buffer_12_loa_2, %branch48 ], [ %image_buffer_13_loa_2, %branch49 ], [ %image_buffer_14_loa_2, %branch50 ], [ %image_buffer_15_loa_2, %branch51 ], [ %image_buffer_16_loa_1, %branch52 ]
+
+ST_8: tmp_71_cast (238)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:1  %tmp_71_cast = zext i8 %image_buffer_load_1_s to i9
+
+ST_8: Gx (239)  [1/1] 1.72ns  loc: src/c/hog.cpp:146
+:2  %Gx = sub i9 %tmp_68_cast, %tmp_71_cast
+
+ST_8: tmp_68 (240)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:3  %tmp_68 = trunc i9 %Gx to i8
+
+ST_8: Gx_cast (241)  [1/1] 0.00ns  loc: src/c/hog.cpp:146
+:4  %Gx_cast = sext i9 %Gx to i10
+
+ST_8: image_buffer_load_2_s (310)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:0  %image_buffer_load_2_s = phi i8 [ %image_buffer_2_load_2, %branch20 ], [ %image_buffer_3_load_2, %branch21 ], [ %image_buffer_4_load_2, %branch22 ], [ %image_buffer_5_load_2, %branch23 ], [ %image_buffer_6_load_2, %branch24 ], [ %image_buffer_7_load_2, %branch25 ], [ %image_buffer_8_load_2, %branch26 ], [ %image_buffer_9_load_2, %branch27 ], [ %image_buffer_10_loa_1, %branch28 ], [ %image_buffer_11_loa_1, %branch29 ], [ %image_buffer_12_loa_1, %branch30 ], [ %image_buffer_13_loa_1, %branch31 ], [ %image_buffer_14_loa_1, %branch32 ], [ %image_buffer_15_loa_1, %branch33 ], [ %image_buffer_16_loa, %branch34 ], [ %image_buffer_17_loa, %branch35 ]
+
+ST_8: tmp_74_cast (311)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:1  %tmp_74_cast = zext i8 %image_buffer_load_2_s to i9
+
+ST_8: image_buffer_load_3_s (364)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:0  %image_buffer_load_3_s = phi i8 [ %image_buffer_0_load, %branch0 ], [ %image_buffer_1_load_2, %branch1 ], [ %image_buffer_2_load_3, %branch2 ], [ %image_buffer_3_load_3, %branch3 ], [ %image_buffer_4_load_3, %branch4 ], [ %image_buffer_5_load_3, %branch5 ], [ %image_buffer_6_load_3, %branch6 ], [ %image_buffer_7_load_3, %branch7 ], [ %image_buffer_8_load_3, %branch8 ], [ %image_buffer_9_load_3, %branch9 ], [ %image_buffer_10_loa, %branch10 ], [ %image_buffer_11_loa, %branch11 ], [ %image_buffer_12_loa, %branch12 ], [ %image_buffer_13_loa, %branch13 ], [ %image_buffer_14_loa, %branch14 ], [ %image_buffer_15_loa, %branch15 ]
+
+ST_8: tmp_75_cast (365)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:1  %tmp_75_cast = zext i8 %image_buffer_load_3_s to i9
+
+ST_8: Gy (366)  [1/1] 1.72ns  loc: src/c/hog.cpp:147
+:2  %Gy = sub i9 %tmp_74_cast, %tmp_75_cast
+
+ST_8: tmp_77 (367)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:3  %tmp_77 = trunc i9 %Gy to i8
+
+ST_8: Gy_cast (368)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:4  %Gy_cast = sext i9 %Gy to i10
+
+ST_8: tmp_60 (369)  [1/1] 1.84ns  loc: src/c/hog.cpp:150
+:5  %tmp_60 = sub i10 %Gx_cast, %Gy_cast
+
+ST_8: tmp_61 (374)  [1/1] 1.37ns  loc: src/c/hog.cpp:156
+:10  %tmp_61 = or i9 %Gy, %Gx
+
+ST_8: tmp_78 (375)  [1/1] 0.00ns  loc: src/c/hog.cpp:156
+:11  %tmp_78 = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %tmp_61, i32 8)
+
+ST_8: StgValue_355 (376)  [1/1] 0.00ns  loc: src/c/hog.cpp:156
+:12  br i1 %tmp_78, label %9, label %._crit_edge
+
+ST_8: tmp_63 (378)  [1/1] 2.03ns  loc: src/c/hog.cpp:156
+:0  %tmp_63 = icmp slt i9 %Gx, 1
+
+ST_8: tmp_64 (379)  [1/1] 2.03ns  loc: src/c/hog.cpp:156
+:1  %tmp_64 = icmp slt i9 %Gy, 1
+
+ST_8: or_cond (380)  [1/1] 1.37ns  loc: src/c/hog.cpp:156
+:2  %or_cond = and i1 %tmp_63, %tmp_64
+
+ST_8: StgValue_359 (381)  [1/1] 0.00ns  loc: src/c/hog.cpp:156
+:3  br i1 %or_cond, label %._crit_edge, label %13
+
+ST_8: abscond3 (384)  [1/1] 2.03ns  loc: src/c/hog.cpp:147
+:1  %abscond3 = icmp sgt i9 %Gy, 0
+
+ST_8: neg4_cast (388)  [1/1] 1.72ns  loc: src/c/hog.cpp:146
+:5  %neg4_cast = sub i8 0, %tmp_68
+
+ST_8: abscond4 (389)  [1/1] 2.03ns  loc: src/c/hog.cpp:146
+:6  %abscond4 = icmp sgt i9 %Gx, 0
+
+ST_8: abs3 (390)  [1/1] 1.37ns  loc: src/c/hog.cpp:146
+:7  %abs3 = select i1 %abscond4, i8 %tmp_68, i8 %neg4_cast
+
+ST_8: abscond1 (415)  [1/1] 2.03ns  loc: src/c/hog.cpp:147
+._crit_edge:1  %abscond1 = icmp sgt i9 %Gy, 0
+
+ST_8: neg2_cast (419)  [1/1] 1.72ns  loc: src/c/hog.cpp:146
+._crit_edge:5  %neg2_cast = sub i8 0, %tmp_68
+
+ST_8: abscond2 (420)  [1/1] 2.03ns  loc: src/c/hog.cpp:146
+._crit_edge:6  %abscond2 = icmp sgt i9 %Gx, 0
+
+ST_8: abs1 (421)  [1/1] 1.37ns  loc: src/c/hog.cpp:146
+._crit_edge:7  %abs1 = select i1 %abscond2, i8 %tmp_68, i8 %neg2_cast
+
+ST_8: sum_load (466)  [2/2] 2.39ns  loc: src/c/hog.cpp:171
+._crit_edge22:21  %sum_load = load i32* %sum_addr_1, align 4
+
+
+ <State 9>: 3.44ns
+ST_9: neg (370)  [1/1] 1.84ns  loc: src/c/hog.cpp:150
+:6  %neg = sub i10 0, %tmp_60
+
+ST_9: abscond (371)  [1/1] 2.07ns  loc: src/c/hog.cpp:150
+:7  %abscond = icmp sgt i10 %tmp_60, 0
+
+ST_9: mag (372)  [1/1] 1.37ns  loc: src/c/hog.cpp:150
+:8  %mag = select i1 %abscond, i10 %tmp_60, i10 %neg
+
+ST_9: tmp_67 (391)  [1/1] 0.00ns  loc: src/c/hog.cpp:163
+:8  %tmp_67 = zext i8 %abs3 to i64
+
+ST_9: lut01_addr_1 (392)  [1/1] 0.00ns  loc: src/c/hog.cpp:163
+:9  %lut01_addr_1 = getelementptr [256 x i7]* @lut01, i64 0, i64 %tmp_67
+
+ST_9: lut01_load_1 (393)  [2/2] 2.71ns  loc: src/c/hog.cpp:163
+:10  %lut01_load_1 = load i7* %lut01_addr_1, align 1
+
+ST_9: tmp_65 (422)  [1/1] 0.00ns  loc: src/c/hog.cpp:157
+._crit_edge:8  %tmp_65 = zext i8 %abs1 to i64
+
+ST_9: lut01_addr (423)  [1/1] 0.00ns  loc: src/c/hog.cpp:157
+._crit_edge:9  %lut01_addr = getelementptr [256 x i7]* @lut01, i64 0, i64 %tmp_65
+
+ST_9: lut01_load (424)  [2/2] 2.71ns  loc: src/c/hog.cpp:157
+._crit_edge:10  %lut01_load = load i7* %lut01_addr, align 1
+
+ST_9: sum_load (466)  [1/2] 2.39ns  loc: src/c/hog.cpp:171
+._crit_edge22:21  %sum_load = load i32* %sum_addr_1, align 4
+
+
+ <State 10>: 5.09ns
+ST_10: mag_cast (373)  [1/1] 0.00ns  loc: src/c/hog.cpp:150
+:9  %mag_cast = sext i10 %mag to i32
+
+ST_10: neg3_cast (383)  [1/1] 1.72ns  loc: src/c/hog.cpp:147
+:0  %neg3_cast = sub i8 0, %tmp_77
+
+ST_10: abs2 (385)  [1/1] 1.37ns  loc: src/c/hog.cpp:147
+:2  %abs2 = select i1 %abscond3, i8 %tmp_77, i8 %neg3_cast
+
+ST_10: lut01_load_1 (393)  [1/2] 2.71ns  loc: src/c/hog.cpp:163
+:10  %lut01_load_1 = load i7* %lut01_addr_1, align 1
+
+ST_10: lut01_load_1_cast_ca (394)  [1/1] 0.00ns  loc: src/c/hog.cpp:163
+:11  %lut01_load_1_cast_ca = zext i7 %lut01_load_1 to i8
+
+ST_10: tmp_69 (395)  [1/1] 2.00ns  loc: src/c/hog.cpp:163
+:12  %tmp_69 = icmp ult i8 %abs2, %lut01_load_1_cast_ca
+
+ST_10: lut12_addr_1 (398)  [1/1] 0.00ns  loc: src/c/hog.cpp:164
+:0  %lut12_addr_1 = getelementptr [256 x i8]* @lut12, i64 0, i64 %tmp_67
+
+ST_10: lut12_load_1 (399)  [2/2] 2.71ns  loc: src/c/hog.cpp:164
+:1  %lut12_load_1 = load i8* %lut12_addr_1, align 1
+
+ST_10: neg1_cast (414)  [1/1] 1.72ns  loc: src/c/hog.cpp:147
+._crit_edge:0  %neg1_cast = sub i8 0, %tmp_77
+
+ST_10: abs (416)  [1/1] 1.37ns  loc: src/c/hog.cpp:147
+._crit_edge:2  %abs = select i1 %abscond1, i8 %tmp_77, i8 %neg1_cast
+
+ST_10: lut01_load (424)  [1/2] 2.71ns  loc: src/c/hog.cpp:157
+._crit_edge:10  %lut01_load = load i7* %lut01_addr, align 1
+
+ST_10: lut01_load_cast_cast (425)  [1/1] 0.00ns  loc: src/c/hog.cpp:157
+._crit_edge:11  %lut01_load_cast_cast = zext i7 %lut01_load to i8
+
+ST_10: tmp_66 (426)  [1/1] 2.00ns  loc: src/c/hog.cpp:157
+._crit_edge:12  %tmp_66 = icmp ult i8 %abs, %lut01_load_cast_cast
+
+ST_10: lut12_addr (429)  [1/1] 0.00ns  loc: src/c/hog.cpp:158
+:0  %lut12_addr = getelementptr [256 x i8]* @lut12, i64 0, i64 %tmp_65
+
+ST_10: lut12_load (430)  [2/2] 2.71ns  loc: src/c/hog.cpp:158
+:1  %lut12_load = load i8* %lut12_addr, align 1
+
+ST_10: tmp_86 (467)  [1/1] 2.44ns  loc: src/c/hog.cpp:171
+._crit_edge22:22  %tmp_86 = add nsw i32 %sum_load, %mag_cast
+
+ST_10: StgValue_395 (468)  [1/1] 2.39ns  loc: src/c/hog.cpp:171
+._crit_edge22:23  store i32 %tmp_86, i32* %sum_addr_1, align 4
+
+
+ <State 11>: 4.71ns
+ST_11: StgValue_396 (396)  [1/1] 1.94ns  loc: src/c/hog.cpp:163
+:13  br i1 %tmp_69, label %._crit_edge22, label %14
+
+ST_11: lut12_load_1 (399)  [1/2] 2.71ns  loc: src/c/hog.cpp:164
+:1  %lut12_load_1 = load i8* %lut12_addr_1, align 1
+
+ST_11: tmp_71 (400)  [1/1] 2.00ns  loc: src/c/hog.cpp:164
+:2  %tmp_71 = icmp ult i8 %abs2, %lut12_load_1
+
+ST_11: lut23_addr_1 (403)  [1/1] 0.00ns  loc: src/c/hog.cpp:165
+:0  %lut23_addr_1 = getelementptr [256 x i9]* @lut23, i64 0, i64 %tmp_67
+
+ST_11: lut23_load_1 (404)  [2/2] 2.71ns  loc: src/c/hog.cpp:165
+:1  %lut23_load_1 = load i9* %lut23_addr_1, align 2
+
+ST_11: StgValue_401 (427)  [1/1] 1.94ns  loc: src/c/hog.cpp:157
+._crit_edge:13  br i1 %tmp_66, label %._crit_edge22, label %10
+
+ST_11: lut12_load (430)  [1/2] 2.71ns  loc: src/c/hog.cpp:158
+:1  %lut12_load = load i8* %lut12_addr, align 1
+
+ST_11: tmp_70 (431)  [1/1] 2.00ns  loc: src/c/hog.cpp:158
+:2  %tmp_70 = icmp ult i8 %abs, %lut12_load
+
+ST_11: lut23_addr (434)  [1/1] 0.00ns  loc: src/c/hog.cpp:159
+:0  %lut23_addr = getelementptr [256 x i9]* @lut23, i64 0, i64 %tmp_65
+
+ST_11: lut23_load (435)  [2/2] 2.71ns  loc: src/c/hog.cpp:159
+:1  %lut23_load = load i9* %lut23_addr, align 2
+
+
+ <State 12>: 4.74ns
+ST_12: abs2_cast6_cast (387)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:4  %abs2_cast6_cast = zext i8 %abs2 to i9
+
+ST_12: StgValue_407 (401)  [1/1] 1.94ns  loc: src/c/hog.cpp:164
+:3  br i1 %tmp_71, label %._crit_edge22, label %15
+
+ST_12: lut23_load_1 (404)  [1/2] 2.71ns  loc: src/c/hog.cpp:165
+:1  %lut23_load_1 = load i9* %lut23_addr_1, align 2
+
+ST_12: tmp_73 (405)  [1/1] 2.03ns  loc: src/c/hog.cpp:165
+:2  %tmp_73 = icmp ult i9 %abs2_cast6_cast, %lut23_load_1
+
+ST_12: lut34_addr_1 (408)  [1/1] 0.00ns  loc: src/c/hog.cpp:166
+:0  %lut34_addr_1 = getelementptr [256 x i11]* @lut34, i64 0, i64 %tmp_67
+
+ST_12: lut34_load_1 (409)  [2/2] 2.71ns  loc: src/c/hog.cpp:166
+:1  %lut34_load_1 = load i11* %lut34_addr_1, align 2
+
+ST_12: abs_cast8_cast (418)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+._crit_edge:4  %abs_cast8_cast = zext i8 %abs to i9
+
+ST_12: StgValue_413 (432)  [1/1] 1.94ns  loc: src/c/hog.cpp:158
+:3  br i1 %tmp_70, label %._crit_edge22, label %11
+
+ST_12: lut23_load (435)  [1/2] 2.71ns  loc: src/c/hog.cpp:159
+:1  %lut23_load = load i9* %lut23_addr, align 2
+
+ST_12: tmp_72 (436)  [1/1] 2.03ns  loc: src/c/hog.cpp:159
+:2  %tmp_72 = icmp ult i9 %abs_cast8_cast, %lut23_load
+
+ST_12: lut34_addr (439)  [1/1] 0.00ns  loc: src/c/hog.cpp:160
+:0  %lut34_addr = getelementptr [256 x i11]* @lut34, i64 0, i64 %tmp_65
+
+ST_12: lut34_load (440)  [2/2] 2.71ns  loc: src/c/hog.cpp:160
+:1  %lut34_load = load i11* %lut34_addr, align 2
+
+
+ <State 13>: 4.82ns
+ST_13: abs2_cast7_cast (386)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+:3  %abs2_cast7_cast = zext i8 %abs2 to i11
+
+ST_13: StgValue_419 (406)  [1/1] 1.94ns  loc: src/c/hog.cpp:165
+:3  br i1 %tmp_73, label %._crit_edge22, label %16
+
+ST_13: lut34_load_1 (409)  [1/2] 2.71ns  loc: src/c/hog.cpp:166
+:1  %lut34_load_1 = load i11* %lut34_addr_1, align 2
+
+ST_13: tmp_75 (410)  [1/1] 2.11ns  loc: src/c/hog.cpp:166
+:2  %tmp_75 = icmp ult i11 %abs2_cast7_cast, %lut34_load_1
+
+ST_13: abs_cast9_cast (417)  [1/1] 0.00ns  loc: src/c/hog.cpp:147
+._crit_edge:3  %abs_cast9_cast = zext i8 %abs to i11
+
+ST_13: StgValue_423 (437)  [1/1] 1.94ns  loc: src/c/hog.cpp:159
+:3  br i1 %tmp_72, label %._crit_edge22, label %12
+
+ST_13: lut34_load (440)  [1/2] 2.71ns  loc: src/c/hog.cpp:160
+:1  %lut34_load = load i11* %lut34_addr, align 2
+
+ST_13: tmp_74 (441)  [1/1] 2.11ns  loc: src/c/hog.cpp:160
+:2  %tmp_74 = icmp ult i11 %abs_cast9_cast, %lut34_load
+
+
+ <State 14>: 3.31ns
+ST_14: bin_index_4 (411)  [1/1] 1.37ns  loc: src/c/hog.cpp:166
+:3  %bin_index_4 = select i1 %tmp_75, i4 7, i4 -8
+
+ST_14: StgValue_427 (412)  [1/1] 1.94ns
+:4  br label %._crit_edge22
+
+ST_14: bin_index_cast_cast (442)  [1/1] 1.37ns  loc: src/c/hog.cpp:160
+:3  %bin_index_cast_cast = select i1 %tmp_74, i4 3, i4 4
+
+ST_14: StgValue_429 (443)  [1/1] 1.94ns
+:4  br label %._crit_edge22
+
+
+ <State 15>: 2.62ns
+ST_15: StgValue_430 (69)  [1/1] 0.00ns
+.reset8:0  call void (...)* @_ssdm_op_SpecLoopName([36 x i8]* @histogram_computeHis)
+
+ST_15: empty_22 (70)  [1/1] 0.00ns
+.reset8:1  %empty_22 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256)
+
+ST_15: StgValue_432 (87)  [1/1] 0.00ns
+.reset8:18  call void (...)* @_ssdm_op_SpecLoopName([26 x i8]* @computeHistogram_lab)
+
+ST_15: y_offset_cast_mid2_c (91)  [1/1] 0.00ns  loc: src/c/hog.cpp:153
+.reset8:22  %y_offset_cast_mid2_c = zext i2 %y_offset_cast_mid2 to i3
+
+ST_15: tmp_49 (97)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+.reset8:28  %tmp_49 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str6)
+
+ST_15: StgValue_435 (98)  [1/1] 0.00ns  loc: src/c/hog.cpp:143
+.reset8:29  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+
+ST_15: bin_index_8 (445)  [1/1] 0.00ns  loc: src/c/hog.cpp:160
+._crit_edge22:0  %bin_index_8 = phi i4 [ %bin_index_cast_cast, %12 ], [ %bin_index_4, %16 ], [ 0, %._crit_edge ], [ 1, %10 ], [ 2, %11 ], [ 4, %13 ], [ 5, %14 ], [ 6, %15 ]
+
+ST_15: p_shl1 (447)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:2  %p_shl1 = call i2 @_ssdm_op_BitConcatenate.i2.i1.i1(i1 %tmp_79, i1 false)
+
+ST_15: p_shl1_cast (448)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:3  %p_shl1_cast = zext i2 %p_shl1 to i3
+
+ST_15: tmp2 (449)  [1/1] 0.80ns  loc: src/c/hog.cpp:169
+._crit_edge22:4  %tmp2 = add i3 %p_shl1_cast, %y_offset_cast_mid2_c
+
+ST_15: tmp_76 (450)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+._crit_edge22:5  %tmp_76 = call i5 @_ssdm_op_BitConcatenate.i5.i1.i1.i3(i1 %tmp_79, i1 false, i3 %tmp2)
+
+ST_15: tmp1_cast (451)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:6  %tmp1_cast = zext i5 %tmp_76 to i7
+
+ST_15: tmp_81 (453)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:8  %tmp_81 = call i4 @_ssdm_op_BitConcatenate.i4.i1.i1.i2(i1 %tmp_80, i1 %tmp_52, i2 0)
+
+ST_15: tmp4_cast (454)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:9  %tmp4_cast = zext i4 %tmp_81 to i7
+
+ST_15: tmp5 (455)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:10  %tmp5 = call i6 @_ssdm_op_BitConcatenate.i6.i1.i1.i4(i1 %tmp_52, i1 false, i4 %bin_index_8)
+
+ST_15: tmp5_cast (456)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:11  %tmp5_cast = zext i6 %tmp5 to i7
+
+ST_15: tmp3 (457)  [1/1] 1.31ns  loc: src/c/hog.cpp:169
+._crit_edge22:12  %tmp3 = add i7 %tmp5_cast, %tmp4_cast
+
+ST_15: tmp_82 (458)  [1/1] 1.31ns  loc: src/c/hog.cpp:169
+._crit_edge22:13  %tmp_82 = add i7 %tmp3, %tmp1_cast
+
+
+ <State 16>: 2.71ns
+ST_16: tmp_83 (459)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:14  %tmp_83 = zext i7 %tmp_82 to i64
+
+ST_16: descriptor_V_addr_1 (460)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:15  %descriptor_V_addr_1 = getelementptr [72 x i15]* %descriptor_V, i64 0, i64 %tmp_83
+
+ST_16: descriptor_V_load (461)  [2/2] 2.71ns  loc: src/c/hog.cpp:169
+._crit_edge22:16  %descriptor_V_load = load i15* %descriptor_V_addr_1, align 2
+
+
+ <State 17>: 4.67ns
+ST_17: descriptor_V_load (461)  [1/2] 2.71ns  loc: src/c/hog.cpp:169
+._crit_edge22:16  %descriptor_V_load = load i15* %descriptor_V_addr_1, align 2
+
+ST_17: tmp_84 (462)  [1/1] 0.00ns  loc: src/c/hog.cpp:169
+._crit_edge22:17  %tmp_84 = sext i10 %mag to i15
+
+ST_17: tmp_85 (463)  [1/1] 1.96ns  loc: src/c/hog.cpp:169
+._crit_edge22:18  %tmp_85 = add i15 %descriptor_V_load, %tmp_84
+
+
+ <State 18>: 2.71ns
+ST_18: StgValue_454 (464)  [1/1] 2.71ns  loc: src/c/hog.cpp:169
+._crit_edge22:19  store i15 %tmp_85, i15* %descriptor_V_addr_1, align 2
+
+ST_18: empty_21 (469)  [1/1] 0.00ns  loc: src/c/hog.cpp:173
+._crit_edge22:24  %empty_21 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str6, i32 %tmp_49)
+
+ST_18: StgValue_456 (473)  [1/1] 0.00ns  loc: src/c/hog.cpp:142
+._crit_edge22:28  br label %4
+
+
+ <State 19>: 0.00ns
+ST_19: StgValue_457 (475)  [1/1] 0.00ns  loc: src/c/hog.cpp:176
+:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6ns, clock uncertainty: 0.75ns.
+
+ <State 1>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', src/c/hog.cpp:115) [27]  (1.57 ns)
+
+ <State 2>: 2.71ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', src/c/hog.cpp:115) [27]  (0 ns)
+	'getelementptr' operation ('descriptor_V_addr', src/c/hog.cpp:116) [34]  (0 ns)
+	'store' operation (src/c/hog.cpp:116) of constant 0 on array 'descriptor_V' [35]  (2.71 ns)
+
+ <State 3>: 2.39ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', src/c/hog.cpp:118) [40]  (0 ns)
+	'getelementptr' operation ('sum_addr', src/c/hog.cpp:119) [47]  (0 ns)
+	'store' operation (src/c/hog.cpp:119) of constant 0 on array 'sum' [48]  (2.39 ns)
+
+ <State 4>: 3.4ns
+The critical path consists of the following:
+	'phi' operation ('indvar_flatten') with incoming values : ('indvar_flatten_next') [59]  (0 ns)
+	'icmp' operation ('exitcond_flatten') [71]  (2.03 ns)
+	'select' operation ('indvar_flatten_next') [472]  (1.37 ns)
+
+ <State 5>: 4.46ns
+The critical path consists of the following:
+	'phi' operation ('y', src/c/hog.cpp:142) with incoming values : ('y_mid2', src/c/hog.cpp:142) [60]  (0 ns)
+	'select' operation ('y_mid', src/c/hog.cpp:142) [72]  (1.37 ns)
+	'add' operation ('y_1_dup', src/c/hog.cpp:146) [86]  (1.72 ns)
+	'select' operation ('p_shl8_mid2', src/c/hog.cpp:169) [94]  (1.37 ns)
+
+ <State 6>: 4.11ns
+The critical path consists of the following:
+	'or' operation ('tmp_57_cast_mid2_v', src/c/hog.cpp:146) [78]  (0 ns)
+	'add' operation ('tmp_54', src/c/hog.cpp:146) [99]  (1.72 ns)
+	'getelementptr' operation ('image_buffer_15_add_2', src/c/hog.cpp:146) [115]  (0 ns)
+	'load' operation ('image_buffer_15_loa_3', src/c/hog.cpp:146) on array 'image_buffer_15' [119]  (2.39 ns)
+
+ <State 7>: 4.62ns
+The critical path consists of the following:
+	'load' operation ('image_buffer_15_loa_3', src/c/hog.cpp:146) on array 'image_buffer_15' [119]  (2.39 ns)
+	multiplexor before 'phi' operation ('image_buffer_load_ph', src/c/hog.cpp:146) with incoming values : ('image_buffer_15_loa_3', src/c/hog.cpp:146) ('image_buffer_14_loa_3', src/c/hog.cpp:146) ('image_buffer_13_loa_3', src/c/hog.cpp:146) ('image_buffer_12_loa_3', src/c/hog.cpp:146) ('image_buffer_11_loa_3', src/c/hog.cpp:146) ('image_buffer_10_loa_3', src/c/hog.cpp:146) ('image_buffer_9_load', src/c/hog.cpp:146) ('image_buffer_8_load', src/c/hog.cpp:146) ('image_buffer_7_load', src/c/hog.cpp:146) ('image_buffer_6_load', src/c/hog.cpp:146) ('image_buffer_5_load', src/c/hog.cpp:146) ('image_buffer_4_load', src/c/hog.cpp:146) ('image_buffer_3_load', src/c/hog.cpp:146) ('image_buffer_2_load', src/c/hog.cpp:146) ('image_buffer_1_load', src/c/hog.cpp:146) ('image_buffer_16_loa_2', src/c/hog.cpp:146) [167]  (2.23 ns)
+
+ <State 8>: 5.12ns
+The critical path consists of the following:
+	'phi' operation ('image_buffer_load_ph', src/c/hog.cpp:146) with incoming values : ('image_buffer_15_loa_3', src/c/hog.cpp:146) ('image_buffer_14_loa_3', src/c/hog.cpp:146) ('image_buffer_13_loa_3', src/c/hog.cpp:146) ('image_buffer_12_loa_3', src/c/hog.cpp:146) ('image_buffer_11_loa_3', src/c/hog.cpp:146) ('image_buffer_10_loa_3', src/c/hog.cpp:146) ('image_buffer_9_load', src/c/hog.cpp:146) ('image_buffer_8_load', src/c/hog.cpp:146) ('image_buffer_7_load', src/c/hog.cpp:146) ('image_buffer_6_load', src/c/hog.cpp:146) ('image_buffer_5_load', src/c/hog.cpp:146) ('image_buffer_4_load', src/c/hog.cpp:146) ('image_buffer_3_load', src/c/hog.cpp:146) ('image_buffer_2_load', src/c/hog.cpp:146) ('image_buffer_1_load', src/c/hog.cpp:146) ('image_buffer_16_loa_2', src/c/hog.cpp:146) [167]  (0 ns)
+	'sub' operation ('Gx', src/c/hog.cpp:146) [239]  (1.72 ns)
+	'icmp' operation ('tmp_63', src/c/hog.cpp:156) [378]  (2.03 ns)
+	'and' operation ('or_cond', src/c/hog.cpp:156) [380]  (1.37 ns)
+
+ <State 9>: 3.44ns
+The critical path consists of the following:
+	'icmp' operation ('abscond', src/c/hog.cpp:150) [371]  (2.07 ns)
+	'select' operation ('mag', src/c/hog.cpp:150) [372]  (1.37 ns)
+
+ <State 10>: 5.09ns
+The critical path consists of the following:
+	'sub' operation ('neg3_cast', src/c/hog.cpp:147) [383]  (1.72 ns)
+	'select' operation ('abs2', src/c/hog.cpp:147) [385]  (1.37 ns)
+	'icmp' operation ('tmp_69', src/c/hog.cpp:163) [395]  (2 ns)
+
+ <State 11>: 4.71ns
+The critical path consists of the following:
+	'load' operation ('lut12_load_1', src/c/hog.cpp:164) on array 'lut12' [399]  (2.71 ns)
+	'icmp' operation ('tmp_71', src/c/hog.cpp:164) [400]  (2 ns)
+
+ <State 12>: 4.74ns
+The critical path consists of the following:
+	'load' operation ('lut23_load_1', src/c/hog.cpp:165) on array 'lut23' [404]  (2.71 ns)
+	'icmp' operation ('tmp_73', src/c/hog.cpp:165) [405]  (2.03 ns)
+
+ <State 13>: 4.82ns
+The critical path consists of the following:
+	'load' operation ('lut34_load_1', src/c/hog.cpp:166) on array 'lut34' [409]  (2.71 ns)
+	'icmp' operation ('tmp_75', src/c/hog.cpp:166) [410]  (2.11 ns)
+
+ <State 14>: 3.31ns
+The critical path consists of the following:
+	'select' operation ('bin_index_4', src/c/hog.cpp:166) [411]  (1.37 ns)
+	multiplexor before 'phi' operation ('bin_index_8', src/c/hog.cpp:160) with incoming values : ('bin_index_4', src/c/hog.cpp:166) ('bin_index_cast_cast', src/c/hog.cpp:160) [445]  (1.94 ns)
+
+ <State 15>: 2.62ns
+The critical path consists of the following:
+	'phi' operation ('bin_index_8', src/c/hog.cpp:160) with incoming values : ('bin_index_4', src/c/hog.cpp:166) ('bin_index_cast_cast', src/c/hog.cpp:160) [445]  (0 ns)
+	'add' operation ('tmp3', src/c/hog.cpp:169) [457]  (1.31 ns)
+	'add' operation ('tmp_82', src/c/hog.cpp:169) [458]  (1.31 ns)
+
+ <State 16>: 2.71ns
+The critical path consists of the following:
+	'getelementptr' operation ('descriptor_V_addr_1', src/c/hog.cpp:169) [460]  (0 ns)
+	'load' operation ('descriptor_V_load', src/c/hog.cpp:169) on array 'descriptor_V' [461]  (2.71 ns)
+
+ <State 17>: 4.67ns
+The critical path consists of the following:
+	'load' operation ('descriptor_V_load', src/c/hog.cpp:169) on array 'descriptor_V' [461]  (2.71 ns)
+	'add' operation ('tmp_85', src/c/hog.cpp:169) [463]  (1.96 ns)
+
+ <State 18>: 2.71ns
+The critical path consists of the following:
+	'store' operation (src/c/hog.cpp:169) of variable 'tmp_85', src/c/hog.cpp:169 on array 'descriptor_V' [464]  (2.71 ns)
+
+ <State 19>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

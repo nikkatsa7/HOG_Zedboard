@@ -1,0 +1,601 @@
+
+
+================================================================
+== Vivado HLS Report for 'normalizeHisto0'
+================================================================
+* Date:           Wed Jun 27 15:31:28 2018
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        Hog_HLS
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   6.00|      5.20|        0.75|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   83|   83|   83|   83|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |   81|   81|        11|          1|          1|    72|    yes   |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 11
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 13
+* Pipeline: 1
+  Pipeline-0: II = 1, D = 11, States = { 2 3 4 5 6 7 8 9 10 11 12 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	13  / (exitcond_flatten)
+	3  / (!exitcond_flatten)
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	2  / true
+13 --> 
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: StgValue_14 (4)  [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecMemCore([72 x i10]* %normalized_V, [1 x i8]* @p_str, [12 x i8]* @p_str16, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_15 (5)  [1/1] 1.57ns  loc: src/c/hog.cpp:77
+:1  br label %.preheader
+
+
+ <State 2>: 5.03ns
+ST_2: indvar_flatten (7)  [1/1] 0.00ns
+.preheader:0  %indvar_flatten = phi i7 [ 0, %0 ], [ %indvar_flatten_next, %21 ]
+
+ST_2: blkIdx (8)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader:1  %blkIdx = phi i2 [ 0, %0 ], [ %tmp_mid2_v, %21 ]
+
+ST_2: i (9)  [1/1] 0.00ns
+.preheader:2  %i = phi i6 [ 0, %0 ], [ %i_2, %21 ]
+
+ST_2: exitcond_flatten (10)  [1/1] 1.97ns
+.preheader:3  %exitcond_flatten = icmp eq i7 %indvar_flatten, -56
+
+ST_2: indvar_flatten_next (11)  [1/1] 1.72ns
+.preheader:4  %indvar_flatten_next = add i7 %indvar_flatten, 1
+
+ST_2: StgValue_21 (12)  [1/1] 0.00ns
+.preheader:5  br i1 %exitcond_flatten, label %22, label %.preheader.preheader
+
+ST_2: tmp_34 (15)  [1/1] 1.94ns  loc: src/c/hog.cpp:78
+.preheader.preheader:1  %tmp_34 = icmp eq i6 %i, -28
+
+ST_2: i_mid2 (16)  [1/1] 1.37ns  loc: src/c/hog.cpp:78
+.preheader.preheader:2  %i_mid2 = select i1 %tmp_34, i6 0, i6 %i
+
+ST_2: blkIdx_s (17)  [1/1] 0.80ns  loc: src/c/hog.cpp:77
+.preheader.preheader:3  %blkIdx_s = add i2 1, %blkIdx
+
+ST_2: tmp_mid2_v (18)  [1/1] 1.37ns  loc: src/c/hog.cpp:81
+.preheader.preheader:4  %tmp_mid2_v = select i1 %tmp_34, i2 %blkIdx_s, i2 %blkIdx
+
+ST_2: tmp (20)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:6  %tmp = trunc i2 %tmp_mid2_v to i1
+
+ST_2: i_2 (140)  [1/1] 1.72ns  loc: src/c/hog.cpp:78
+:1  %i_2 = add i6 %i_mid2, 1
+
+
+ <State 3>: 2.39ns
+ST_3: tmp_mid2 (19)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:5  %tmp_mid2 = zext i2 %tmp_mid2_v to i64
+
+ST_3: sum_addr (27)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:13  %sum_addr = getelementptr [2 x i32]* %sum, i64 0, i64 %tmp_mid2
+
+ST_3: sum_load (28)  [2/2] 2.39ns  loc: src/c/hog.cpp:81
+.preheader.preheader:14  %sum_load = load i32* %sum_addr, align 4
+
+
+ <State 4>: 4.54ns
+ST_4: sum_load (28)  [1/2] 2.39ns  loc: src/c/hog.cpp:81
+.preheader.preheader:14  %sum_load = load i32* %sum_addr, align 4
+
+ST_4: zext_cast (29)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:15  %zext_cast = zext i32 %sum_load to i65
+
+ST_4: mul (30)  [7/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+
+ <State 5>: 2.15ns
+ST_5: mul (30)  [6/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+
+ <State 6>: 2.15ns
+ST_6: mul (30)  [5/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+
+ <State 7>: 2.15ns
+ST_7: mul (30)  [4/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+
+ <State 8>: 2.15ns
+ST_8: mul (30)  [3/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+
+ <State 9>: 2.15ns
+ST_9: p_shl4_cast_mid2_v (23)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:9  %p_shl4_cast_mid2_v = call i3 @_ssdm_op_BitConcatenate.i3.i1.i2(i1 %tmp, i2 0)
+
+ST_9: p_shl4_cast_mid2 (24)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:10  %p_shl4_cast_mid2 = zext i3 %p_shl4_cast_mid2_v to i6
+
+ST_9: mul (30)  [2/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+ST_9: tmp1 (35)  [1/1] 1.72ns  loc: src/c/hog.cpp:83
+.preheader.preheader:21  %tmp1 = add i6 %i_mid2, %p_shl4_cast_mid2
+
+
+ <State 10>: 4.43ns
+ST_10: p_shl_cast_mid2_v (21)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:7  %p_shl_cast_mid2_v = call i6 @_ssdm_op_BitConcatenate.i6.i1.i5(i1 %tmp, i5 0)
+
+ST_10: p_shl_cast_mid2 (22)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:8  %p_shl_cast_mid2 = zext i6 %p_shl_cast_mid2_v to i7
+
+ST_10: mul (30)  [1/7] 2.15ns  loc: src/c/hog.cpp:81
+.preheader.preheader:16  %mul = mul i65 7635497416, %zext_cast
+
+ST_10: tmp_35 (31)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:17  %tmp_35 = call i27 @_ssdm_op_PartSelect.i27.i65.i32.i32(i65 %mul, i32 38, i32 64)
+
+ST_10: tmp1_cast (36)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:22  %tmp1_cast = zext i6 %tmp1 to i7
+
+ST_10: tmp_20 (37)  [1/1] 1.72ns  loc: src/c/hog.cpp:83
+.preheader.preheader:23  %tmp_20 = add i7 %p_shl_cast_mid2, %tmp1_cast
+
+ST_10: tmp_21 (38)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:24  %tmp_21 = zext i7 %tmp_20 to i64
+
+ST_10: descriptor_V_addr (42)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:28  %descriptor_V_addr = getelementptr [72 x i15]* %descriptor_V, i64 0, i64 %tmp_21
+
+ST_10: descriptor_V_load (43)  [2/2] 2.71ns  loc: src/c/hog.cpp:83
+.preheader.preheader:29  %descriptor_V_load = load i15* %descriptor_V_addr, align 2
+
+
+ <State 11>: 5.20ns
+ST_11: average_cast8 (32)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:18  %average_cast8 = zext i27 %tmp_35 to i31
+
+ST_11: average_cast7 (33)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:19  %average_cast7 = zext i27 %tmp_35 to i30
+
+ST_11: average_cast (34)  [1/1] 0.00ns  loc: src/c/hog.cpp:81
+.preheader.preheader:20  %average_cast = zext i27 %tmp_35 to i28
+
+ST_11: op2_assign (39)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:25  %op2_assign = call i28 @_ssdm_op_BitConcatenate.i28.i27.i1(i27 %tmp_35, i1 false)
+
+ST_11: op2_assign_cast6 (40)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:26  %op2_assign_cast6 = zext i28 %op2_assign to i31
+
+ST_11: op2_assign_cast (41)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:27  %op2_assign_cast = zext i28 %op2_assign to i29
+
+ST_11: descriptor_V_load (43)  [1/2] 2.71ns  loc: src/c/hog.cpp:83
+.preheader.preheader:29  %descriptor_V_load = load i15* %descriptor_V_addr, align 2
+
+ST_11: tmp_22_cast5 (44)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:30  %tmp_22_cast5 = sext i15 %descriptor_V_load to i26
+
+ST_11: tmp_22_cast4 (45)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:31  %tmp_22_cast4 = sext i15 %descriptor_V_load to i27
+
+ST_11: tmp_22_cast3 (46)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:32  %tmp_22_cast3 = sext i15 %descriptor_V_load to i28
+
+ST_11: tmp_22_cast2 (47)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:33  %tmp_22_cast2 = sext i15 %descriptor_V_load to i31
+
+ST_11: tmp_22_cast (48)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:34  %tmp_22_cast = sext i15 %descriptor_V_load to i29
+
+ST_11: tmp_22 (49)  [1/1] 2.46ns  loc: src/c/hog.cpp:83
+.preheader.preheader:35  %tmp_22 = icmp sgt i29 %tmp_22_cast, %op2_assign_cast
+
+ST_11: StgValue_64 (50)  [1/1] 0.00ns  loc: src/c/hog.cpp:83
+.preheader.preheader:36  br i1 %tmp_22, label %1, label %2
+
+ST_11: p_shl5 (52)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:0  %p_shl5 = call i30 @_ssdm_op_BitConcatenate.i30.i27.i3(i27 %tmp_35, i3 0)
+
+ST_11: p_shl5_cast (53)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:1  %p_shl5_cast = zext i30 %p_shl5 to i31
+
+ST_11: tmp_23 (54)  [1/1] 2.44ns  loc: src/c/hog.cpp:86
+:2  %tmp_23 = sub i31 %p_shl5_cast, %average_cast8
+
+ST_11: tmp_s (55)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:3  %tmp_s = call i29 @_ssdm_op_PartSelect.i29.i31.i32.i32(i31 %tmp_23, i32 2, i32 30)
+
+ST_11: tmp_36 (56)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:4  %tmp_36 = sext i29 %tmp_s to i30
+
+ST_11: op2_assign_7_cast (57)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:5  %op2_assign_7_cast = zext i30 %tmp_36 to i31
+
+ST_11: tmp_24 (58)  [1/1] 2.49ns  loc: src/c/hog.cpp:86
+:6  %tmp_24 = icmp sgt i31 %tmp_22_cast2, %op2_assign_7_cast
+
+ST_11: StgValue_72 (59)  [1/1] 0.00ns  loc: src/c/hog.cpp:86
+:7  br i1 %tmp_24, label %3, label %4
+
+ST_11: tmp_25 (61)  [1/1] 2.44ns  loc: src/c/hog.cpp:89
+:0  %tmp_25 = sub i31 %p_shl5_cast, %op2_assign_cast6
+
+ST_11: tmp_37 (62)  [1/1] 0.00ns  loc: src/c/hog.cpp:89
+:1  %tmp_37 = call i29 @_ssdm_op_PartSelect.i29.i31.i32.i32(i31 %tmp_25, i32 2, i32 30)
+
+ST_11: tmp_38 (63)  [1/1] 0.00ns  loc: src/c/hog.cpp:89
+:2  %tmp_38 = sext i29 %tmp_37 to i30
+
+ST_11: op2_assign_8_cast (64)  [1/1] 0.00ns  loc: src/c/hog.cpp:89
+:3  %op2_assign_8_cast = zext i30 %tmp_38 to i31
+
+ST_11: tmp_26 (65)  [1/1] 2.49ns  loc: src/c/hog.cpp:89
+:4  %tmp_26 = icmp sgt i31 %tmp_22_cast2, %op2_assign_8_cast
+
+ST_11: StgValue_78 (66)  [1/1] 0.00ns  loc: src/c/hog.cpp:89
+:5  br i1 %tmp_26, label %5, label %6
+
+ST_11: p_shl6 (68)  [1/1] 0.00ns  loc: src/c/hog.cpp:92
+:0  %p_shl6 = call i29 @_ssdm_op_BitConcatenate.i29.i27.i2(i27 %tmp_35, i2 0)
+
+ST_11: p_shl6_cast (69)  [1/1] 0.00ns  loc: src/c/hog.cpp:92
+:1  %p_shl6_cast = zext i29 %p_shl6 to i30
+
+ST_11: tmp_27 (70)  [1/1] 2.44ns  loc: src/c/hog.cpp:92
+:2  %tmp_27 = add i30 %p_shl6_cast, %average_cast7
+
+ST_11: tmp_39 (71)  [1/1] 0.00ns  loc: src/c/hog.cpp:92
+:3  %tmp_39 = call i28 @_ssdm_op_PartSelect.i28.i30.i32.i32(i30 %tmp_27, i32 2, i32 29)
+
+ST_11: op2_assign_9_cast (72)  [1/1] 0.00ns  loc: src/c/hog.cpp:92
+:4  %op2_assign_9_cast = zext i28 %tmp_39 to i29
+
+ST_11: tmp_28 (73)  [1/1] 2.46ns  loc: src/c/hog.cpp:92
+:5  %tmp_28 = icmp sgt i29 %tmp_22_cast, %op2_assign_9_cast
+
+ST_11: StgValue_85 (74)  [1/1] 0.00ns  loc: src/c/hog.cpp:92
+:6  br i1 %tmp_28, label %7, label %8
+
+ST_11: tmp_29 (76)  [1/1] 2.44ns  loc: src/c/hog.cpp:95
+:0  %tmp_29 = icmp sgt i28 %tmp_22_cast3, %average_cast
+
+ST_11: StgValue_87 (77)  [1/1] 0.00ns  loc: src/c/hog.cpp:95
+:1  br i1 %tmp_29, label %9, label %10
+
+ST_11: tmp_30 (79)  [1/1] 2.44ns  loc: src/c/hog.cpp:98
+:0  %tmp_30 = sub i30 %p_shl6_cast, %average_cast7
+
+ST_11: tmp_40 (80)  [1/1] 0.00ns  loc: src/c/hog.cpp:98
+:1  %tmp_40 = call i28 @_ssdm_op_PartSelect.i28.i30.i32.i32(i30 %tmp_30, i32 2, i32 29)
+
+ST_11: tmp_41 (81)  [1/1] 0.00ns  loc: src/c/hog.cpp:98
+:2  %tmp_41 = sext i28 %tmp_40 to i30
+
+ST_11: op2_assign_10_cast (82)  [1/1] 0.00ns  loc: src/c/hog.cpp:98
+:3  %op2_assign_10_cast = zext i30 %tmp_41 to i31
+
+ST_11: tmp_31 (83)  [1/1] 2.49ns  loc: src/c/hog.cpp:98
+:4  %tmp_31 = icmp sgt i31 %tmp_22_cast2, %op2_assign_10_cast
+
+ST_11: StgValue_93 (84)  [1/1] 0.00ns  loc: src/c/hog.cpp:98
+:5  br i1 %tmp_31, label %11, label %12
+
+ST_11: tmp_42 (86)  [1/1] 0.00ns  loc: src/c/hog.cpp:101
+:0  %tmp_42 = call i26 @_ssdm_op_PartSelect.i26.i65.i32.i32(i65 %mul, i32 39, i32 64)
+
+ST_11: op2_assign_11_cast (87)  [1/1] 0.00ns  loc: src/c/hog.cpp:101
+:1  %op2_assign_11_cast = zext i26 %tmp_42 to i27
+
+ST_11: tmp_32 (88)  [1/1] 2.43ns  loc: src/c/hog.cpp:101
+:2  %tmp_32 = icmp sgt i27 %tmp_22_cast4, %op2_assign_11_cast
+
+ST_11: StgValue_97 (89)  [1/1] 0.00ns  loc: src/c/hog.cpp:101
+:3  br i1 %tmp_32, label %13, label %14
+
+ST_11: tmp_43 (91)  [1/1] 0.00ns  loc: src/c/hog.cpp:104
+:0  %tmp_43 = call i25 @_ssdm_op_PartSelect.i25.i65.i32.i32(i65 %mul, i32 40, i32 64)
+
+ST_11: op2_assign_12_cast (92)  [1/1] 0.00ns  loc: src/c/hog.cpp:104
+:1  %op2_assign_12_cast = zext i25 %tmp_43 to i26
+
+ST_11: tmp_33 (93)  [1/1] 2.42ns  loc: src/c/hog.cpp:104
+:2  %tmp_33 = icmp sgt i26 %tmp_22_cast5, %op2_assign_12_cast
+
+
+ <State 12>: 3.76ns
+ST_12: empty_16 (14)  [1/1] 0.00ns
+.preheader.preheader:0  %empty_16 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 72, i64 72, i64 72)
+
+ST_12: tmp_19 (25)  [1/1] 0.00ns  loc: src/c/hog.cpp:78
+.preheader.preheader:11  %tmp_19 = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str5)
+
+ST_12: StgValue_103 (26)  [1/1] 0.00ns  loc: src/c/hog.cpp:79
+.preheader.preheader:12  call void (...)* @_ssdm_op_SpecPipeline(i32 1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+
+ST_12: normalized_V_addr_13 (94)  [1/1] 0.00ns  loc: src/c/hog.cpp:105
+:3  %normalized_V_addr_13 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: storemerge_cast_cast (95)  [1/1] 1.37ns  loc: src/c/hog.cpp:105
+:4  %storemerge_cast_cast = select i1 %tmp_33, i10 51, i10 0
+
+ST_12: StgValue_106 (96)  [1/1] 2.39ns  loc: src/c/hog.cpp:105
+:5  store i10 %storemerge_cast_cast, i10* %normalized_V_addr_13, align 2
+
+ST_12: StgValue_107 (97)  [1/1] 0.00ns
+:6  br label %15
+
+ST_12: normalized_V_addr_12 (99)  [1/1] 0.00ns  loc: src/c/hog.cpp:102
+:0  %normalized_V_addr_12 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_109 (100)  [1/1] 2.39ns  loc: src/c/hog.cpp:102
+:1  store i10 102, i10* %normalized_V_addr_12, align 2
+
+ST_12: StgValue_110 (101)  [1/1] 0.00ns  loc: src/c/hog.cpp:103
+:2  br label %15
+
+ST_12: StgValue_111 (103)  [1/1] 0.00ns
+:0  br label %16
+
+ST_12: normalized_V_addr_11 (105)  [1/1] 0.00ns  loc: src/c/hog.cpp:99
+:0  %normalized_V_addr_11 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_113 (106)  [1/1] 2.39ns  loc: src/c/hog.cpp:99
+:1  store i10 153, i10* %normalized_V_addr_11, align 2
+
+ST_12: StgValue_114 (107)  [1/1] 0.00ns  loc: src/c/hog.cpp:100
+:2  br label %16
+
+ST_12: StgValue_115 (109)  [1/1] 0.00ns
+:0  br label %17
+
+ST_12: normalized_V_addr_10 (111)  [1/1] 0.00ns  loc: src/c/hog.cpp:96
+:0  %normalized_V_addr_10 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_117 (112)  [1/1] 2.39ns  loc: src/c/hog.cpp:96
+:1  store i10 204, i10* %normalized_V_addr_10, align 2
+
+ST_12: StgValue_118 (113)  [1/1] 0.00ns  loc: src/c/hog.cpp:97
+:2  br label %17
+
+ST_12: StgValue_119 (115)  [1/1] 0.00ns
+:0  br label %18
+
+ST_12: normalized_V_addr_9 (117)  [1/1] 0.00ns  loc: src/c/hog.cpp:93
+:0  %normalized_V_addr_9 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_121 (118)  [1/1] 2.39ns  loc: src/c/hog.cpp:93
+:1  store i10 256, i10* %normalized_V_addr_9, align 2
+
+ST_12: StgValue_122 (119)  [1/1] 0.00ns  loc: src/c/hog.cpp:94
+:2  br label %18
+
+ST_12: StgValue_123 (121)  [1/1] 0.00ns
+:0  br label %19
+
+ST_12: normalized_V_addr_8 (123)  [1/1] 0.00ns  loc: src/c/hog.cpp:90
+:0  %normalized_V_addr_8 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_125 (124)  [1/1] 2.39ns  loc: src/c/hog.cpp:90
+:1  store i10 307, i10* %normalized_V_addr_8, align 2
+
+ST_12: StgValue_126 (125)  [1/1] 0.00ns  loc: src/c/hog.cpp:91
+:2  br label %19
+
+ST_12: StgValue_127 (127)  [1/1] 0.00ns
+:0  br label %20
+
+ST_12: normalized_V_addr (129)  [1/1] 0.00ns  loc: src/c/hog.cpp:87
+:0  %normalized_V_addr = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_129 (130)  [1/1] 2.39ns  loc: src/c/hog.cpp:87
+:1  store i10 358, i10* %normalized_V_addr, align 2
+
+ST_12: StgValue_130 (131)  [1/1] 0.00ns  loc: src/c/hog.cpp:88
+:2  br label %20
+
+ST_12: StgValue_131 (133)  [1/1] 0.00ns
+:0  br label %21
+
+ST_12: normalized_V_addr25 (135)  [1/1] 0.00ns  loc: src/c/hog.cpp:84
+:0  %normalized_V_addr25 = getelementptr [72 x i10]* %normalized_V, i64 0, i64 %tmp_21
+
+ST_12: StgValue_133 (136)  [1/1] 2.39ns  loc: src/c/hog.cpp:84
+:1  store i10 409, i10* %normalized_V_addr25, align 2
+
+ST_12: StgValue_134 (137)  [1/1] 0.00ns  loc: src/c/hog.cpp:85
+:2  br label %21
+
+ST_12: empty (139)  [1/1] 0.00ns  loc: src/c/hog.cpp:110
+:0  %empty = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str5, i32 %tmp_19)
+
+ST_12: StgValue_136 (141)  [1/1] 0.00ns  loc: src/c/hog.cpp:78
+:2  br label %.preheader
+
+
+ <State 13>: 0.00ns
+ST_13: StgValue_137 (143)  [1/1] 0.00ns  loc: src/c/hog.cpp:112
+:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6ns, clock uncertainty: 0.75ns.
+
+ <State 1>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('indvar_flatten') with incoming values : ('indvar_flatten_next') [7]  (1.57 ns)
+
+ <State 2>: 5.03ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', src/c/hog.cpp:78) [9]  (0 ns)
+	'icmp' operation ('tmp_34', src/c/hog.cpp:78) [15]  (1.94 ns)
+	'select' operation ('i_mid2', src/c/hog.cpp:78) [16]  (1.37 ns)
+	'add' operation ('i', src/c/hog.cpp:78) [140]  (1.72 ns)
+
+ <State 3>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('sum_addr', src/c/hog.cpp:81) [27]  (0 ns)
+	'load' operation ('sum_load', src/c/hog.cpp:81) on array 'sum' [28]  (2.39 ns)
+
+ <State 4>: 4.54ns
+The critical path consists of the following:
+	'load' operation ('sum_load', src/c/hog.cpp:81) on array 'sum' [28]  (2.39 ns)
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 5>: 2.15ns
+The critical path consists of the following:
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 6>: 2.15ns
+The critical path consists of the following:
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 7>: 2.15ns
+The critical path consists of the following:
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 8>: 2.15ns
+The critical path consists of the following:
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 9>: 2.15ns
+The critical path consists of the following:
+	'mul' operation ('mul', src/c/hog.cpp:81) [30]  (2.15 ns)
+
+ <State 10>: 4.43ns
+The critical path consists of the following:
+	'add' operation ('tmp_20', src/c/hog.cpp:83) [37]  (1.72 ns)
+	'getelementptr' operation ('descriptor_V_addr', src/c/hog.cpp:83) [42]  (0 ns)
+	'load' operation ('descriptor_V_load', src/c/hog.cpp:83) on array 'descriptor_V' [43]  (2.71 ns)
+
+ <State 11>: 5.2ns
+The critical path consists of the following:
+	'load' operation ('descriptor_V_load', src/c/hog.cpp:83) on array 'descriptor_V' [43]  (2.71 ns)
+	'icmp' operation ('tmp_24', src/c/hog.cpp:86) [58]  (2.49 ns)
+
+ <State 12>: 3.76ns
+The critical path consists of the following:
+	'select' operation ('storemerge_cast_cast', src/c/hog.cpp:105) [95]  (1.37 ns)
+	'store' operation (src/c/hog.cpp:105) of variable 'storemerge_cast_cast', src/c/hog.cpp:105 on array 'normalized_V' [96]  (2.39 ns)
+
+ <State 13>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

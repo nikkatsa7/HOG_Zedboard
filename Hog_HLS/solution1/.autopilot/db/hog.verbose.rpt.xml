@@ -1,0 +1,552 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'hog'" level="0">
+<item name = "Date">Wed Jun 27 15:31:33 2018
+</item>
+<item name = "Version">2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)</item>
+<item name = "Project">Hog_HLS</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">6.00, 5.25, 0.75</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">1787, 1787, 1788, 1788, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_computeHistogram0_fu_955">computeHistogram0, 347, 347, 347, 347, none</column>
+<column name="grp_computeHistogram1_fu_987">computeHistogram1, 347, 347, 347, 347, none</column>
+<column name="grp_normalizeHisto0_fu_1019">normalizeHisto0, 83, 83, 83, 83, none</column>
+<column name="grp_normalizeHisto1_fu_1026">normalizeHisto1, 83, 83, 83, 83, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- read_input0_memcpy..image0">634, 634, 24, 1, 1, 612, yes</column>
+<column name="- read_input1_memcpy..image0">634, 634, 24, 1, 1, 612, yes</column>
+<column name="- svm_loop">78, 78, 8, 1, 1, 72, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="DSP">-, 3, -, -</column>
+<column name="Expression">-, -, 0, 392</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">12, 13, 2608, 4132</column>
+<column name="Memory">10, -, 576, 180</column>
+<column name="Multiplexer">-, -, -, 478</column>
+<column name="Register">-, -, 675, 67</column>
+<specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
+<specialColumn name="Utilization (%)">7, 7, 3, 9</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="grp_computeHistogram0_fu_955">computeHistogram0, 4, 0, 285, 797</column>
+<column name="grp_computeHistogram1_fu_987">computeHistogram1, 4, 0, 285, 797</column>
+<column name="hog_CONTROL_BUS_s_axi_U">hog_CONTROL_BUS_s_axi, 0, 0, 74, 104</column>
+<column name="hog_INPUT_IMAGE_m_axi_U">hog_INPUT_IMAGE_m_axi, 2, 0, 548, 700</column>
+<column name="hog_SPECS_s_axi_U">hog_SPECS_s_axi, 2, 0, 110, 110</column>
+<column name="hog_mul_10s_10s_2CeG_U59">hog_mul_10s_10s_2CeG, 0, 1, 0, 0</column>
+<column name="hog_mul_32s_5ns_3Bew_U54">hog_mul_32s_5ns_3Bew, 0, 2, 0, 0</column>
+<column name="hog_mul_32s_5ns_3Bew_U57">hog_mul_32s_5ns_3Bew, 0, 2, 0, 0</column>
+<column name="hog_urem_10ns_7nsAem_U53">hog_urem_10ns_7nsAem, 0, 0, 247, 247</column>
+<column name="hog_urem_10ns_7nsAem_U55">hog_urem_10ns_7nsAem, 0, 0, 247, 247</column>
+<column name="hog_urem_10ns_7nsAem_U56">hog_urem_10ns_7nsAem, 0, 0, 247, 247</column>
+<column name="hog_urem_10ns_7nsAem_U58">hog_urem_10ns_7nsAem, 0, 0, 247, 247</column>
+<column name="grp_normalizeHisto0_fu_1019">normalizeHisto0, 0, 4, 159, 318</column>
+<column name="grp_normalizeHisto1_fu_1026">normalizeHisto1, 0, 4, 159, 318</column>
+</table>
+</item>
+<item name = "DSP48"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+<column name="hog_mac_muladd_10Ee0_U62">hog_mac_muladd_10Ee0, i0 + i1 * i2</column>
+<column name="hog_mul_mul_10ns_DeQ_U60">hog_mul_mul_10ns_DeQ, i0 * i1</column>
+<column name="hog_mul_mul_10ns_DeQ_U61">hog_mul_mul_10ns_DeQ, i0 * i1</column>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="descriptor0_V_U">hog_descriptor0_V, 1, 0, 0, 72, 15, 1, 1080</column>
+<column name="descriptor1_V_U">hog_descriptor0_V, 1, 0, 0, 72, 15, 1, 1080</column>
+<column name="image_buffer0_0_U">hog_image_buffer0_0, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_17_U">hog_image_buffer0_0, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_0_U">hog_image_buffer0_0, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_17_U">hog_image_buffer0_0, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_1_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_2_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_3_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_4_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_5_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_6_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_7_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_8_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_9_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_10_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_11_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_12_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_13_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_14_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_15_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer0_16_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_1_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_2_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_3_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_4_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_5_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_6_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_7_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_8_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_9_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_10_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_11_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_12_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_13_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_14_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_15_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="image_buffer1_16_U">hog_image_buffer0_1, 0, 16, 5, 34, 8, 1, 272</column>
+<column name="normalized0_V_U">hog_normalized0_V, 1, 0, 0, 72, 10, 1, 720</column>
+<column name="normalized1_V_U">hog_normalized0_V, 1, 0, 0, 72, 10, 1, 720</column>
+<column name="sum0_U">hog_sum0, 2, 0, 0, 2, 32, 1, 64</column>
+<column name="sum1_U">hog_sum0, 2, 0, 0, 2, 32, 1, 64</column>
+<column name="weights_U">hog_weights, 2, 0, 0, 1152, 10, 1, 11520</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="i_1_fu_1283_p2">+, 0, 0, 5, 5, 1</column>
+<column name="i_3_fu_1458_p2">+, 0, 0, 7, 7, 1</column>
+<column name="i_s_fu_1107_p2">+, 0, 0, 5, 5, 1</column>
+<column name="image02_sum7_fu_1379_p2">+, 0, 0, 17, 34, 34</column>
+<column name="image02_sum_fu_1207_p2">+, 0, 0, 34, 34, 34</column>
+<column name="indvar_flatten_next9_fu_1263_p2">+, 0, 0, 10, 10, 1</column>
+<column name="indvar_flatten_next_fu_1087_p2">+, 0, 0, 10, 10, 1</column>
+<column name="indvar_next1_fu_1297_p2">+, 0, 0, 6, 6, 1</column>
+<column name="indvar_next_fu_1121_p2">+, 0, 0, 6, 6, 1</column>
+<column name="p_sum1_cast_mid2_v_fu_1199_p2">+, 0, 0, 33, 33, 33</column>
+<column name="p_sum2_cast_mid2_v_fu_1374_p2">+, 0, 0, 17, 34, 34</column>
+<column name="sum_fu_1528_p2">+, 0, 0, 26, 26, 26</column>
+<column name="tmp2_fu_1154_p2">+, 0, 0, 7, 7, 7</column>
+<column name="tmp3_fu_1248_p2">+, 0, 0, 33, 33, 6</column>
+<column name="tmp6_fu_1338_p2">+, 0, 0, 7, 7, 7</column>
+<column name="tmp7_fu_1468_p2">+, 0, 0, 8, 8, 7</column>
+<column name="tmp_2_i_fu_1484_p2">+, 0, 0, 30, 30, 30</column>
+<column name="tmp_34_fu_1432_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp_38_fu_1164_p2">+, 0, 0, 10, 10, 10</column>
+<column name="tmp_43_fu_1348_p2">+, 0, 0, 10, 10, 10</column>
+<column name="tmp_8_i_fu_1497_p2">+, 0, 0, 30, 30, 30</column>
+<column name="ap_condition_1744">and, 0, 0, 1, 1, 1</column>
+<column name="ap_condition_1757">and, 0, 0, 1, 1, 1</column>
+<column name="exitcond1_fu_1269_p2">icmp, 0, 0, 3, 6, 6</column>
+<column name="exitcond_flatten1_fu_1257_p2">icmp, 0, 0, 4, 10, 10</column>
+<column name="exitcond_flatten_fu_1081_p2">icmp, 0, 0, 4, 10, 10</column>
+<column name="exitcond_fu_1093_p2">icmp, 0, 0, 3, 6, 6</column>
+<column name="tmp_45_fu_1222_p2">icmp, 0, 0, 4, 10, 1</column>
+<column name="tmp_50_fu_1394_p2">icmp, 0, 0, 4, 10, 1</column>
+<column name="tmp_i_fu_1452_p2">icmp, 0, 0, 3, 7, 7</column>
+<column name="indvar1_mid2_fu_1275_p3">select, 0, 0, 6, 1, 1</column>
+<column name="indvar_mid2_fu_1099_p3">select, 0, 0, 6, 1, 1</column>
+<column name="p_sum2_cast_mid2_v_v_s_fu_1289_p3">select, 0, 0, 5, 1, 5</column>
+<column name="tmp_mid2_v_v_fu_1113_p3">select, 0, 0, 5, 1, 5</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="INPUT_IMAGE_ARADDR">32, 3, 32, 96</column>
+<column name="INPUT_IMAGE_blk_n_AR">1, 2, 1, 2</column>
+<column name="INPUT_IMAGE_blk_n_R">1, 2, 1, 2</column>
+<column name="ap_NS_fsm">6, 13, 1, 13</column>
+<column name="ap_enable_reg_pp0_iter23">1, 2, 1, 2</column>
+<column name="ap_enable_reg_pp1_iter23">1, 2, 1, 2</column>
+<column name="ap_enable_reg_pp2_iter7">1, 2, 1, 2</column>
+<column name="ap_sig_ioackin_INPUT_IMAGE_ARREADY">1, 2, 1, 2</column>
+<column name="classify_0_reg_931">26, 2, 26, 52</column>
+<column name="descriptor0_V_address0">7, 3, 7, 21</column>
+<column name="descriptor0_V_ce0">1, 3, 1, 3</column>
+<column name="descriptor0_V_ce1">1, 2, 1, 2</column>
+<column name="descriptor0_V_we0">1, 2, 1, 2</column>
+<column name="descriptor0_V_we1">1, 2, 1, 2</column>
+<column name="descriptor1_V_address0">7, 3, 7, 21</column>
+<column name="descriptor1_V_ce0">1, 3, 1, 3</column>
+<column name="descriptor1_V_ce1">1, 2, 1, 2</column>
+<column name="descriptor1_V_we0">1, 2, 1, 2</column>
+<column name="descriptor1_V_we1">1, 2, 1, 2</column>
+<column name="i4_phi_fu_913_p4">5, 2, 5, 10</column>
+<column name="i4_reg_909">5, 2, 5, 10</column>
+<column name="i_i_phi_fu_947_p4">7, 2, 7, 14</column>
+<column name="i_i_reg_943">7, 2, 7, 14</column>
+<column name="i_phi_fu_879_p4">5, 2, 5, 10</column>
+<column name="i_reg_875">5, 2, 5, 10</column>
+<column name="image_buffer0_0_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_0_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_10_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_10_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_10_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_11_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_11_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_11_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_12_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_12_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_12_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_13_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_13_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_13_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_14_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_14_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_14_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_15_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_15_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_15_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_16_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_16_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_16_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_17_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_17_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_1_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_1_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_1_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_2_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_2_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_2_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_3_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_3_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_3_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_4_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_4_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_4_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_5_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_5_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_5_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_6_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_6_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_6_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_7_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_7_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_7_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_8_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_8_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_8_ce1">1, 2, 1, 2</column>
+<column name="image_buffer0_9_address0">6, 3, 6, 18</column>
+<column name="image_buffer0_9_ce0">1, 3, 1, 3</column>
+<column name="image_buffer0_9_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_0_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_0_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_10_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_10_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_10_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_11_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_11_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_11_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_12_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_12_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_12_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_13_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_13_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_13_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_14_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_14_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_14_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_15_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_15_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_15_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_16_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_16_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_16_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_17_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_17_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_1_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_1_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_1_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_2_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_2_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_2_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_3_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_3_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_3_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_4_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_4_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_4_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_5_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_5_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_5_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_6_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_6_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_6_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_7_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_7_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_7_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_8_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_8_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_8_ce1">1, 2, 1, 2</column>
+<column name="image_buffer1_9_address0">6, 3, 6, 18</column>
+<column name="image_buffer1_9_ce0">1, 3, 1, 3</column>
+<column name="image_buffer1_9_ce1">1, 2, 1, 2</column>
+<column name="indvar1_reg_920">6, 2, 6, 12</column>
+<column name="indvar_flatten8_phi_fu_901_p4">10, 2, 10, 20</column>
+<column name="indvar_flatten8_reg_897">10, 2, 10, 20</column>
+<column name="indvar_flatten_phi_fu_867_p4">10, 2, 10, 20</column>
+<column name="indvar_flatten_reg_863">10, 2, 10, 20</column>
+<column name="indvar_reg_886">6, 2, 6, 12</column>
+<column name="normalized0_V_ce1">1, 2, 1, 2</column>
+<column name="normalized0_V_we1">1, 2, 1, 2</column>
+<column name="normalized1_V_ce1">1, 2, 1, 2</column>
+<column name="normalized1_V_we1">1, 2, 1, 2</column>
+<column name="specs_address0">2, 5, 2, 10</column>
+<column name="sum0_address0">1, 3, 1, 3</column>
+<column name="sum0_ce0">1, 3, 1, 3</column>
+<column name="sum0_ce1">1, 2, 1, 2</column>
+<column name="sum0_we0">1, 2, 1, 2</column>
+<column name="sum0_we1">1, 2, 1, 2</column>
+<column name="sum1_address0">1, 3, 1, 3</column>
+<column name="sum1_ce0">1, 3, 1, 3</column>
+<column name="sum1_ce1">1, 2, 1, 2</column>
+<column name="sum1_we0">1, 2, 1, 2</column>
+<column name="sum1_we1">1, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="INPUT_IMAGE_addr_1_reg_1717">32, 0, 32, 0</column>
+<column name="INPUT_IMAGE_addr_reg_1645">32, 0, 32, 0</column>
+<column name="ap_CS_fsm">12, 0, 12, 0</column>
+<column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter10">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter11">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter12">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter13">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter14">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter15">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter16">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter17">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter18">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter19">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter20">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter21">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter22">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter23">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter3">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter4">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter5">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter6">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter7">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter8">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter9">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter10">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter11">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter12">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter13">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter14">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter15">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter16">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter17">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter18">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter19">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter20">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter21">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter22">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter23">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter3">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter4">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter5">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter6">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter7">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter8">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp1_iter9">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter3">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter4">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter5">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter6">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp2_iter7">1, 0, 1, 0</column>
+<column name="ap_pipeline_reg_pp2_iter3_normalized0_V_load_reg_1782">10, 0, 10, 0</column>
+<column name="ap_pipeline_reg_pp2_iter3_weights_load_reg_1787">10, 0, 10, 0</column>
+<column name="ap_reg_grp_computeHistogram0_fu_955_ap_start">1, 0, 1, 0</column>
+<column name="ap_reg_grp_computeHistogram1_fu_987_ap_start">1, 0, 1, 0</column>
+<column name="ap_reg_grp_normalizeHisto0_fu_1019_ap_start">1, 0, 1, 0</column>
+<column name="ap_reg_grp_normalizeHisto1_fu_1026_ap_start">1, 0, 1, 0</column>
+<column name="ap_reg_ioackin_INPUT_IMAGE_ARREADY">1, 0, 1, 0</column>
+<column name="classify_0_reg_931">26, 0, 26, 0</column>
+<column name="exitcond_flatten1_reg_1665">1, 0, 1, 0</column>
+<column name="exitcond_flatten_reg_1588">1, 0, 1, 0</column>
+<column name="i4_reg_909">5, 0, 5, 0</column>
+<column name="i_3_reg_1752">7, 0, 7, 0</column>
+<column name="i_i_reg_943">7, 0, 7, 0</column>
+<column name="i_reg_875">5, 0, 5, 0</column>
+<column name="indvar1_mid2_reg_1674">6, 0, 6, 0</column>
+<column name="indvar1_reg_920">6, 0, 6, 0</column>
+<column name="indvar_flatten8_reg_897">10, 0, 10, 0</column>
+<column name="indvar_flatten_next9_reg_1669">10, 0, 10, 0</column>
+<column name="indvar_flatten_next_reg_1592">10, 0, 10, 0</column>
+<column name="indvar_flatten_reg_863">10, 0, 10, 0</column>
+<column name="indvar_mid2_reg_1597">6, 0, 6, 0</column>
+<column name="indvar_reg_886">6, 0, 6, 0</column>
+<column name="normalized0_V_load_reg_1782">10, 0, 10, 0</column>
+<column name="normalized1_V_load_reg_1792">10, 0, 10, 0</column>
+<column name="offset_assign_cast_reg_1742">25, 0, 30, 5</column>
+<column name="p_sum1_cast_mid2_v_reg_1635">33, 0, 33, 0</column>
+<column name="p_sum2_cast_mid2_v_v_2_reg_1712">32, 0, 32, 0</column>
+<column name="p_sum2_cast_mid2_v_v_s_reg_1679">5, 0, 5, 0</column>
+<column name="r_V_1_reg_1822">20, 0, 20, 0</column>
+<column name="reg_1033">8, 0, 8, 0</column>
+<column name="specs_load_reg_1570">32, 0, 32, 0</column>
+<column name="tmp3_cast_reg_1660">34, 0, 34, 0</column>
+<column name="tmp7_reg_1757">8, 0, 8, 0</column>
+<column name="tmp_35_cast_reg_1582">33, 0, 33, 0</column>
+<column name="tmp_38_reg_1615">10, 0, 10, 0</column>
+<column name="tmp_40_reg_1655">10, 0, 10, 0</column>
+<column name="tmp_43_reg_1697">10, 0, 10, 0</column>
+<column name="tmp_44_reg_1827">20, 0, 20, 0</column>
+<column name="tmp_45_reg_1651">1, 0, 1, 0</column>
+<column name="tmp_45_t_reg_1631">5, 0, 5, 0</column>
+<column name="tmp_49_reg_1723">10, 0, 10, 0</column>
+<column name="tmp_50_reg_1728">1, 0, 1, 0</column>
+<column name="tmp_52_t_reg_1708">5, 0, 5, 0</column>
+<column name="tmp_cast_reg_1576">34, 0, 34, 0</column>
+<column name="tmp_i_reg_1748">1, 0, 1, 0</column>
+<column name="tmp_mid2_v_v_reg_1602">5, 0, 5, 0</column>
+<column name="tmp_reg_1640">10, 0, 10, 0</column>
+<column name="tmp_s_reg_1732">10, 0, 10, 0</column>
+<column name="weights_load_1_reg_1797">10, 0, 10, 0</column>
+<column name="weights_load_reg_1787">10, 0, 10, 0</column>
+<column name="INPUT_IMAGE_addr_1_reg_1717">0, 32, 32, 0</column>
+<column name="exitcond_flatten1_reg_1665">0, 1, 1, 0</column>
+<column name="exitcond_flatten_reg_1588">0, 1, 1, 0</column>
+<column name="indvar1_mid2_reg_1674">0, 6, 6, 0</column>
+<column name="indvar_mid2_reg_1597">0, 6, 6, 0</column>
+<column name="p_sum2_cast_mid2_v_v_s_reg_1679">0, 5, 5, 0</column>
+<column name="tmp_45_t_reg_1631">0, 5, 5, 0</column>
+<column name="tmp_52_t_reg_1708">0, 5, 5, 0</column>
+<column name="tmp_i_reg_1748">0, 1, 1, 0</column>
+<column name="tmp_mid2_v_v_reg_1602">0, 5, 5, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="s_axi_CONTROL_BUS_AWVALID">in, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_AWREADY">out, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_AWADDR">in, 5, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_WVALID">in, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_WREADY">out, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_WDATA">in, 32, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_WSTRB">in, 4, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_ARVALID">in, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_ARREADY">out, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_ARADDR">in, 5, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_RVALID">out, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_RREADY">in, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_RDATA">out, 32, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_RRESP">out, 2, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_BVALID">out, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_BREADY">in, 1, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_CONTROL_BUS_BRESP">out, 2, s_axi, CONTROL_BUS, scalar</column>
+<column name="s_axi_SPECS_AWVALID">in, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_AWREADY">out, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_AWADDR">in, 5, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_WVALID">in, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_WREADY">out, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_WDATA">in, 32, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_WSTRB">in, 4, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_ARVALID">in, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_ARREADY">out, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_ARADDR">in, 5, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_RVALID">out, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_RREADY">in, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_RDATA">out, 32, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_RRESP">out, 2, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_BVALID">out, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_BREADY">in, 1, s_axi, SPECS, array</column>
+<column name="s_axi_SPECS_BRESP">out, 2, s_axi, SPECS, array</column>
+<column name="ap_clk">in, 1, ap_ctrl_hs, hog, return value</column>
+<column name="ap_rst_n">in, 1, ap_ctrl_hs, hog, return value</column>
+<column name="interrupt">out, 1, ap_ctrl_hs, hog, return value</column>
+<column name="m_axi_INPUT_IMAGE_AWVALID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWREADY">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWADDR">out, 32, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWLEN">out, 8, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWSIZE">out, 3, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWBURST">out, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWLOCK">out, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWCACHE">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWPROT">out, 3, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWQOS">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWREGION">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_AWUSER">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WVALID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WREADY">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WDATA">out, 32, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WSTRB">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WLAST">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_WUSER">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARVALID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARREADY">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARADDR">out, 32, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARID">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARLEN">out, 8, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARSIZE">out, 3, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARBURST">out, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARLOCK">out, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARCACHE">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARPROT">out, 3, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARQOS">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARREGION">out, 4, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_ARUSER">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RVALID">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RREADY">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RDATA">in, 32, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RLAST">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RID">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RUSER">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_RRESP">in, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_BVALID">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_BREADY">out, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_BRESP">in, 2, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_BID">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+<column name="m_axi_INPUT_IMAGE_BUSER">in, 1, m_axi, INPUT_IMAGE, pointer</column>
+</table>
+</item>
+</section>
+</profile>

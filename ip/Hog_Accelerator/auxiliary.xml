@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="hog" xd:componentRef="hog" xd:initiationInterval="1788" xd:clockPeriod="6.000000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_CONTROL_BUS" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="*(image0)" xd:originalName="image0" xd:direction="inout" xd:interfaceRef="m_axi_INPUT_IMAGE" xd:busTypeRef="aximm" xd:dataWidth="8" xd:bufferDirection="in"/>
+  <xd:arg xd:name="specs[]" xd:originalName="specs" xd:direction="inout" xd:interfaceRef="s_axi_SPECS" xd:busTypeRef="axilite" xd:offset="0x10" xd:arraySize="4" xd:dataWidth="32"/>
+  <xd:arg xd:name="image0" xd:originalName="image0" xd:direction="in" xd:interfaceRef="s_axi_CONTROL_BUS" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_INPUT_IMAGE" xd:dataWidth="32" xd:offset="0x10" xd:handshakeRef="ap_none"/>
+  <xd:latencyEstimates xd:best-case="1787" xd:worst-case="1787" xd:average-case="1787"/>
+  <xd:resourceEstimates xd:LUT="5249" xd:FF="3859" xd:BRAM="22" xd:DSP="16"/>
+</xd:acceleratorMap>

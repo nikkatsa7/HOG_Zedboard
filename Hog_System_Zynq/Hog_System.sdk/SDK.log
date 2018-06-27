@@ -1,0 +1,8 @@
+16:32:42 INFO  : Registering command handlers for SDK TCF services
+16:32:45 INFO  : Launching XSCT server: xsct -n -interactive /home/nick/Documents/HOG_SYSTEM_6/zedboard_vga.sdk/temp_xsdb_launch_script.tcl
+16:32:45 ERROR : (XSDB Server)awk: symbol lookup error: awk: undefined symbol: mpfr_z_sub
+
+16:32:46 INFO  : XSCT server has started successfully.
+16:32:46 INFO  : Successfully done setting XSCT server connection channel  
+16:32:46 INFO  : Successfully done setting SDK workspace  
+16:32:46 INFO  : Processing command line option -hwspec /home/nick/Documents/HOG_SYSTEM_6/zedboard_vga.sdk/design_1_wrapper.hdf.

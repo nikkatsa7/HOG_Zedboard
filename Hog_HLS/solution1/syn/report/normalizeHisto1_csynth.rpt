@@ -1,0 +1,211 @@
+
+
+================================================================
+== Vivado HLS Report for 'normalizeHisto1'
+================================================================
+* Date:           Wed Jun 27 15:31:31 2018
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        Hog_HLS
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   6.00|      5.20|        0.75|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   83|   83|   83|   83|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |   81|   81|        11|          1|          1|    72|    yes   |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|    257|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      4|       0|      0|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|     53|
+|Register         |        -|      -|     159|      8|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      4|     159|    318|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      1|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+----------------------+---------+-------+---+----+
+    |          Instance          |        Module        | BRAM_18K| DSP48E| FF| LUT|
+    +----------------------------+----------------------+---------+-------+---+----+
+    |hog_mul_34ns_32nsjbC_x_U49  |hog_mul_34ns_32nsjbC  |        0|      4|  0|   0|
+    +----------------------------+----------------------+---------+-------+---+----+
+    |Total                       |                      |        0|      4|  0|   0|
+    +----------------------------+----------------------+---------+-------+---+----+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |          Variable Name         | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |blkIdx_s_fu_269_p2              |     +    |      0|  0|   2|           1|           2|
+    |i_1_fu_287_p2                   |     +    |      0|  0|   6|           6|           1|
+    |indvar_flatten_next_fu_249_p2   |     +    |      0|  0|   7|           7|           1|
+    |tmp1_fu_318_p2                  |     +    |      0|  0|   6|           6|           6|
+    |tmp_11_fu_490_p2                |     +    |      0|  0|  30|          30|          30|
+    |tmp_3_fu_347_p2                 |     +    |      0|  0|   7|           7|           7|
+    |tmp_14_fu_522_p2                |     -    |      0|  0|  30|          30|          30|
+    |tmp_7_fu_419_p2                 |     -    |      0|  0|  31|          31|          31|
+    |tmp_9_fu_449_p2                 |     -    |      0|  0|  31|          31|          31|
+    |ap_condition_199                |    and   |      0|  0|   1|           1|           1|
+    |ap_condition_203                |    and   |      0|  0|   1|           1|           1|
+    |ap_condition_207                |    and   |      0|  0|   1|           1|           1|
+    |ap_condition_211                |    and   |      0|  0|   1|           1|           1|
+    |ap_condition_215                |    and   |      0|  0|   1|           1|           1|
+    |ap_condition_219                |    and   |      0|  0|   1|           1|           1|
+    |exitcond_flatten_fu_243_p2      |   icmp   |      0|  0|   3|           7|           7|
+    |tmp_10_fu_473_p2                |   icmp   |      0|  0|  11|          31|          31|
+    |tmp_12_fu_510_p2                |   icmp   |      0|  0|  10|          29|          29|
+    |tmp_13_fu_516_p2                |   icmp   |      0|  0|  10|          28|          28|
+    |tmp_15_fu_546_p2                |   icmp   |      0|  0|  11|          31|          31|
+    |tmp_16_fu_565_p2                |   icmp   |      0|  0|   9|          27|          27|
+    |tmp_17_fu_584_p2                |   icmp   |      0|  0|   9|          26|          26|
+    |tmp_2_fu_255_p2                 |   icmp   |      0|  0|   3|           6|           6|
+    |tmp_6_fu_402_p2                 |   icmp   |      0|  0|  10|          29|          29|
+    |tmp_8_fu_443_p2                 |   icmp   |      0|  0|  11|          31|          31|
+    |i_mid2_fu_261_p3                |  select  |      0|  0|   6|           1|           1|
+    |storemerge_cast_cast_fu_590_p3  |  select  |      0|  0|   6|           1|           6|
+    |tmp_mid2_v_fu_275_p3            |  select  |      0|  0|   2|           1|           2|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+    |Total                           |          |      0|  0| 257|         403|         399|
+    +--------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------+----+-----------+-----+-----------+
+    |           Name           | LUT| Input Size| Bits| Total Bits|
+    +--------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                 |   1|          4|    1|          4|
+    |ap_enable_reg_pp0_iter10  |   1|          2|    1|          2|
+    |blkIdx_phi_fu_225_p4      |   2|          2|    2|          4|
+    |blkIdx_reg_221            |   2|          2|    2|          4|
+    |i_reg_232                 |   6|          2|    6|         12|
+    |indvar_flatten_reg_210    |   7|          2|    7|         14|
+    |normalized_V_address1     |  14|          9|    7|         63|
+    |normalized_V_d1           |  20|          9|   10|         90|
+    +--------------------------+----+-----------+-----+-----------+
+    |Total                     |  53|         32|   36|        193|
+    +--------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------+----+----+-----+-----------+
+    |                   Name                  | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                |   3|   0|    3|          0|
+    |ap_enable_reg_pp0_iter0                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter10                 |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter8                  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter9                  |   1|   0|    1|          0|
+    |ap_pipeline_reg_pp0_iter9_tmp_4_reg_660  |   7|   0|   64|         57|
+    |blkIdx_reg_221                           |   2|   0|    2|          0|
+    |exitcond_flatten_reg_598                 |   1|   0|    1|          0|
+    |i_mid2_reg_607                           |   6|   0|    6|          0|
+    |i_reg_232                                |   6|   0|    6|          0|
+    |indvar_flatten_reg_210                   |   7|   0|    7|          0|
+    |mul_reg_644                              |  65|   0|   65|          0|
+    |tmp1_reg_639                             |   6|   0|    6|          0|
+    |tmp_10_reg_685                           |   1|   0|    1|          0|
+    |tmp_12_reg_689                           |   1|   0|    1|          0|
+    |tmp_13_reg_693                           |   1|   0|    1|          0|
+    |tmp_15_reg_697                           |   1|   0|    1|          0|
+    |tmp_16_reg_701                           |   1|   0|    1|          0|
+    |tmp_17_reg_705                           |   1|   0|    1|          0|
+    |tmp_4_reg_660                            |   7|   0|   64|         57|
+    |tmp_5_reg_650                            |  27|   0|   27|          0|
+    |tmp_6_reg_677                            |   1|   0|    1|          0|
+    |tmp_8_reg_681                            |   1|   0|    1|          0|
+    |tmp_mid2_v_reg_612                       |   2|   0|    2|          0|
+    |tmp_reg_618                              |   1|   0|    1|          0|
+    |exitcond_flatten_reg_598                 |   0|   1|    1|          0|
+    |i_mid2_reg_607                           |   0|   6|    6|          0|
+    |tmp_reg_618                              |   0|   1|    1|          0|
+    +-----------------------------------------+----+----+-----+-----------+
+    |Total                                    | 159|   8|  281|        114|
+    +-----------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+-----------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++-----------------------+-----+-----+------------+-----------------+--------------+
+|ap_clk                 |  in |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|ap_rst                 |  in |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|ap_start               |  in |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|ap_done                | out |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|ap_idle                | out |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|ap_ready               | out |    1| ap_ctrl_hs | normalizeHisto1 | return value |
+|sum_address0           | out |    1|  ap_memory |       sum       |     array    |
+|sum_ce0                | out |    1|  ap_memory |       sum       |     array    |
+|sum_q0                 |  in |   32|  ap_memory |       sum       |     array    |
+|descriptor_V_address0  | out |    7|  ap_memory |   descriptor_V  |     array    |
+|descriptor_V_ce0       | out |    1|  ap_memory |   descriptor_V  |     array    |
+|descriptor_V_q0        |  in |   15|  ap_memory |   descriptor_V  |     array    |
+|normalized_V_address1  | out |    7|  ap_memory |   normalized_V  |     array    |
+|normalized_V_ce1       | out |    1|  ap_memory |   normalized_V  |     array    |
+|normalized_V_we1       | out |    1|  ap_memory |   normalized_V  |     array    |
+|normalized_V_d1        | out |   10|  ap_memory |   normalized_V  |     array    |
++-----------------------+-----+-----+------------+-----------------+--------------+
+

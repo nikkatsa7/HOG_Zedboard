@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="hog.cpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/hog.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="HOG.cpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/HOG.cpp"/>
+    <originFiles name="HOG.hpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/HOG.hpp"/>
+    <originFiles name="consts.h" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/consts.h"/>
+    <originFiles name="lighter_svm.cpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/lighter_svm.cpp"/>
+    <originFiles name="lighter_svm.hpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/lighter_svm.hpp"/>
+    <originFiles name="main.cpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/main.cpp"/>
+    <originFiles name="svmResults.hpp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/svmResults.hpp"/>
+    <originFiles name="testImage.bmp" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/test_image/testImage.bmp"/>
+    <originFiles name="types.h" path="/home/nick/Documents/student_xohw18-222_Nikolaos_Bellas_20180630_1/src/c/types.h"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>
