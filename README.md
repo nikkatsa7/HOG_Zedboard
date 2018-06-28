@@ -56,4 +56,4 @@ makefile or run the executable application provided in sw/ directory.
 
 # Video demonstration
 
-[![Youtube Video](https://youtu.be/iZMuou-autA)
+[![Youtube Video](https://www.youtube.com/watch?v=iZMuou-autA)
