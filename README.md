@@ -54,4 +54,6 @@ to be inserted into the Zedboard.
 Step 3: You can either compile the application on the Zedboard using the provided 
 makefile or run the executable application provided in sw/ directory.
 
-Link to YouTube Video(s):
+# Video demonstration
+
+[![Youtube Video](https://youtu.be/iZMuou-autA)
