@@ -2,7 +2,9 @@
 A real time Histogram of Oriented Gradients Implamentaion on FPGA
 
 Board used: Zedboard
+
 Vivado Version: 2016.04
+
 Brief description of project: In this project a real time implementation of 
 the Histogram of Oriented Gradients pedestrian detection algorithm is presented. 
 We have designed hardware accelerators via Vivado HLS in order to reduce the 
@@ -52,4 +54,8 @@ to be inserted into the Zedboard.
 Step 3: You can either compile the application on the Zedboard using the provided 
 makefile or run the executable application provided in sw/ directory.
 
-Link to YouTube Video(s):
+# Video demonstration
+
+[![Youtube Video](https://img.youtube.com/vi/watch?v=iZMuou-autA/0.jpg)](https://www.youtube.com/watch?v=iZMuou-autA)
+
+
